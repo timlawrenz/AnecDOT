@@ -1,0 +1,144 @@
+# AnecDOT: Graph-of-Thought Reasoning with DOT
+
+> Teaching LLMs to think structurally through Graphviz DOT language
+
+## Overview
+
+AnecDOT is a research project exploring the use of DOT (Graphviz) as an intermediate reasoning format for Large Language Models. Instead of forcing LLMs to approach complex planning tasks linearly, we train specialized models to generate formal graph representations that capture dependencies, state transitions, and architectural structures.
+
+This repository contains the **Factory** (Repo A) - the open-source tooling for dataset generation, model training, and validation. The generated datasets are maintained separately under EPL-2.0 licensing.
+
+## Motivation
+
+Current LLMs struggle with:
+- **Long-horizon planning**: Multi-step tasks with complex dependencies
+- **Structural reasoning**: Understanding relationships between components
+- **State management**: Tracking transitions and flow control
+
+By introducing DOT as an intermediate representation, we enable models to:
+- Express complex logic as verifiable graph structures
+- Separate architectural planning from implementation details
+- Enable graph-based orchestration of multi-agent workflows
+
+## Project Goals
+
+1. **Phase I**: Build a high-quality dataset of `(Natural Language → DOT)` and `(Code → DOT)` pairs
+2. **Phase II**: Fine-tune small-to-mid-sized models (Gemma 2 9B, Llama 3 8B) to generate syntactically valid and semantically accurate DOT graphs
+3. **Future**: Enable graph-based orchestration where DOT output drives agentic workflows
+
+## Architecture
+
+### Dataset Generation (Phase I)
+
+Three data streams feed the training pipeline:
+
+#### 📚 Documentation Stream
+- **Source**: Graphviz.org gallery, guides, and attribute references
+- **Method**: HTML scraping of examples
+- **Purpose**: Foundational syntax and attribute usage
+
+#### 🔧 Logic Stream
+- **Source**: Open-source FSM libraries (`python-statemachine`, `aasm`, etc.)
+- **Method**: Static analysis + dynamic `.to_dot()` execution
+- **Purpose**: Code-to-graph abstraction
+
+#### 🤖 Synthetic Stream
+- **Source**: Teacher LLMs (GPT-4, Gemini) + seed prompts
+- **Method**: Complex scenario generation with compiler verification
+- **Purpose**: High-level architectural reasoning
+
+### Data Schema
+
+```json
+{
+  "id": "unique_id_123",
+  "source": "graphviz_gallery",
+  "license": "EPL-2.0",
+  "task_type": "NL_TO_DOT",
+  "input_text": "Create a directed graph showing a login state machine...",
+  "context_snippet": null,
+  "output_dot": "digraph { Start -> Login; ... }",
+  "verification_status": "passed_compiler"
+}
+```
+
+### Model Training (Phase II)
+
+- **Base Models**: Gemma 2 (9B), Llama 3 (8B)
+- **Technique**: QLoRA (Quantized Low-Rank Adaptation)
+- **Hardware**: Single 24GB VRAM GPU (e.g., RTX 4090)
+- **Objective**: Causal Language Modeling optimized for DOT syntax
+
+## Validation Metrics
+
+### Syntactic Viability (Pass@1)
+- Generate 1,000 graphs from unseen prompts
+- Validate with `dot -Tpng > /dev/null`
+- **Target**: >95% compilation success
+
+### Semantic Alignment (LLM-as-a-Judge)
+- Evaluate logical correctness with stronger model (Gemini 1.5 Pro)
+- **Target**: Statistically significant improvement over base model
+
+## Repository Structure
+
+```
+AnecDOT/
+├── docs/               # Project documentation
+│   └── initial-brief.md
+├── scrapers/           # Data collection tools
+├── parsers/            # FSM extraction and analysis
+├── generators/         # Synthetic data generation
+├── validation/         # DOT compiler verification
+├── training/           # Fine-tuning scripts
+└── orchestrator/       # Graph-based execution engine (future)
+```
+
+## Licensing & Public Domain Commitment
+
+This repository (The Factory) is licensed under **MIT/Apache-2.0** for maximum reusability and unrestricted use.
+
+Generated datasets (The Artifact) are maintained separately under **EPL-2.0** to comply with Graphviz documentation licensing.
+
+**All outputs of this project—including trained models, datasets, and research findings—are intended for the public domain to further research, education, and open development.** Our goal is to advance the field of LLM reasoning and make these capabilities accessible to researchers, developers, and the broader AI community.
+
+We believe that structural reasoning capabilities should be a public good, freely available for:
+- 🎓 Academic research and education
+- 🔬 Further experimentation and iteration
+- 🛠️ Integration into open-source tools
+- 🌍 Advancement of AI safety and interpretability
+
+## Roadmap
+
+- [ ] **Phase I.1**: Implement documentation stream scraper
+- [ ] **Phase I.2**: Build FSM library parser
+- [ ] **Phase I.3**: Create synthetic generation pipeline
+- [ ] **Phase I.4**: Validate and deduplicate dataset
+- [ ] **Phase II.1**: Set up QLoRA training infrastructure
+- [ ] **Phase II.2**: Fine-tune base models
+- [ ] **Phase II.3**: Run validation benchmarks
+- [ ] **Phase III**: Implement graph-based orchestrator
+
+## Contributing
+
+Contributions are welcome! This is an experimental research project exploring novel approaches to LLM reasoning. By contributing, you help advance publicly available research that benefits the entire community.
+
+## Future Vision: The Orchestrator
+
+Once models reliably generate DOT graphs, they become engines for **graph-based agentic workflows**:
+
+1. Model generates a dependency graph (the plan)
+2. Python orchestrator traverses the graph
+3. Each node executes with context from predecessor nodes
+4. Edges act as data pipelines between specialized models
+
+This decouples the "Planner" (local DOT model) from "Workers" (coding models), enabling complex multi-step software generation on consumer hardware.
+
+## References
+
+- [Graphviz Documentation](https://graphviz.org/)
+- [QLoRA: Efficient Finetuning of Quantized LLMs](https://arxiv.org/abs/2305.14314)
+
+---
+
+**Status**: 🚧 Early Research Phase | **Mission**: Building public-domain reasoning infrastructure for all
