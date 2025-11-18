@@ -108,9 +108,61 @@ We believe that structural reasoning capabilities should be a public good, freel
 - 🛠️ Integration into open-source tools
 - 🌍 Advancement of AI safety and interpretability
 
+## Quick Start
+
+### Installation
+
+```bash
+# Clone repository
+git clone https://github.com/your-org/AnecDOT.git
+cd AnecDOT
+
+# Install Python dependencies
+pip install -r requirements.txt
+
+# Install Graphviz (required for validation)
+# Linux:
+sudo apt-get install graphviz
+
+# macOS:
+brew install graphviz
+
+# Windows:
+choco install graphviz
+```
+
+### Run the Graphviz Gallery Scraper
+
+**Interactive TUI (Recommended):**
+```bash
+# Install Textual for TUI support
+pip install textual
+
+# Run interactive scraper
+python3 -m scrapers.graphviz_gallery_tui
+```
+
+**Command-line interface:**
+```bash
+# Basic usage (outputs to ./data/documentation-stream.jsonl)
+python3 -m scrapers.graphviz_gallery
+
+# Custom output path
+python3 -m scrapers.graphviz_gallery --output /path/to/output.jsonl
+
+# Dry run (no output file)
+python3 -m scrapers.graphviz_gallery --dry-run
+```
+
+### Run Tests
+
+```bash
+pytest tests/ -v
+```
+
 ## Roadmap
 
-- [ ] **Phase I.1**: Implement documentation stream scraper
+- [x] **Phase I.1**: Implement documentation stream scraper ✅
 - [ ] **Phase I.2**: Build FSM library parser
 - [ ] **Phase I.3**: Create synthetic generation pipeline
 - [ ] **Phase I.4**: Validate and deduplicate dataset

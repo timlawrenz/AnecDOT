@@ -1,0 +1,5 @@
+# Ignore generated dataset files
+*.jsonl
+
+# But keep directory structure
+!.gitignore
