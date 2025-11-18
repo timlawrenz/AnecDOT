@@ -163,6 +163,9 @@ pytest tests/ -v
 ## Roadmap
 
 - [x] **Phase I.1**: Implement documentation stream scraper ✅
+  - [x] Gallery scraper (13 examples)
+  - [x] Attribute docs scraper (31 examples)
+  - [x] Total: 44 validated DOT examples
 - [ ] **Phase I.2**: Build FSM library parser
 - [ ] **Phase I.3**: Create synthetic generation pipeline
 - [ ] **Phase I.4**: Validate and deduplicate dataset

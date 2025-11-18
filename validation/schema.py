@@ -28,6 +28,7 @@ class DataRecord:
         output_dot: DOT code (exact formatting preserved)
         verification_status: Validation result ("passed_compiler", "failed_compiler")
         scraped_at: ISO 8601 timestamp of scraping
+        instruction_confidence: Confidence score for heuristic instructions (0.0-1.0)
     """
     
     id: str
@@ -40,6 +41,7 @@ class DataRecord:
     verification_status: str
     scraped_at: str
     context_snippet: Optional[str] = None
+    instruction_confidence: Optional[float] = None
     
     def to_dict(self) -> dict:
         """Convert to dictionary for JSONL serialization."""
