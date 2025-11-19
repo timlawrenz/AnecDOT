@@ -154,6 +154,33 @@ python3 -m scrapers.graphviz_gallery --output /path/to/output.jsonl
 python3 -m scrapers.graphviz_gallery --dry-run
 ```
 
+### Run the FSM Library Parser
+
+Extract (Code → DOT) and (NL → DOT) pairs from FSM libraries:
+
+```bash
+# Process a directory containing FSM code
+python3 -m parsers.fsm_extractor \
+  --path /path/to/repo \
+  --license MIT \
+  --output data/logic-stream.jsonl
+
+# Dry run to preview extraction
+python3 -m parsers.fsm_extractor \
+  --path /path/to/repo \
+  --license MIT \
+  --dry-run \
+  --verbose
+```
+
+**Supported FSM libraries:**
+- `python-statemachine` - Detects StateMachine subclasses
+- `transitions.extensions.GraphMachine` - Detects GraphMachine usage
+
+**Output:**
+- CODE_TO_DOT pairs: Python code → DOT graph
+- NL_TO_DOT pairs: Natural language (from docstrings) → DOT graph
+
 ### Run Tests
 
 ```bash
@@ -166,7 +193,11 @@ pytest tests/ -v
   - [x] Gallery scraper (13 examples)
   - [x] Attribute docs scraper (31 examples)
   - [x] Total: 44 validated DOT examples
-- [ ] **Phase I.2**: Build FSM library parser
+- [x] **Phase I.2**: Build FSM library parser ✅
+  - [x] AST-based pattern detection
+  - [x] Sandboxed DOT extraction
+  - [x] Natural language pairing
+  - [x] Total: 14 pairs (7 CODE_TO_DOT + 7 NL_TO_DOT)
 - [ ] **Phase I.3**: Create synthetic generation pipeline
 - [ ] **Phase I.4**: Validate and deduplicate dataset
 - [ ] **Phase II.1**: Set up QLoRA training infrastructure
