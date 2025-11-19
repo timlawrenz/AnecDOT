@@ -1,0 +1,10 @@
+digraph States {
+    graph [rankdir=LR];
+    node [shape=circle, fontsize=12];
+
+    Idle -> Loading   [label="start"];
+    Loading -> Ready  [label="success"];
+    Loading -> Error  [label="fail"];
+    Error -> Idle     [label="reset"];
+    Ready -> Idle     [label="finish"];
+}

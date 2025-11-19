@@ -1,0 +1,5 @@
+Source: DOT Language Guide for Devs and Analysts
+URL: https://www.danieleteti.it/post/dot-language-guide-for-devs-and-analysts-en/
+Category: flowchart
+Type: Flowchart
+Description: Professional flowchart for authentication system showing decisions, processes, and logical flow

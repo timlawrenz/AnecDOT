@@ -1,0 +1,5 @@
+Source: DOT Language Guide for Devs and Analysts
+URL: https://www.danieleteti.it/post/dot-language-guide-for-devs-and-analysts-en/
+Category: architecture
+Type: Architecture
+Description: Dependency graph showing module relationships with UI, API, Service, and Database layers

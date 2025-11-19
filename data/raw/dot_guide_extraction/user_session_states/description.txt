@@ -1,0 +1,1 @@
+User session state machine: anonymous, logged in, active, idle, locked out

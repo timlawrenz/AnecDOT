@@ -1,0 +1,11 @@
+digraph Deps {
+    graph [rankdir=LR];
+    node [shape=box, style=filled, fillcolor="#F7FAFF", fontname="Inter"];
+    edge [color="#555555"];
+
+    UI -> API;
+    API -> Service;
+    API -> Cache [style=dashed, label="optional"];
+    Service -> Database;
+    Cache -> Database [style=dashed];
+}

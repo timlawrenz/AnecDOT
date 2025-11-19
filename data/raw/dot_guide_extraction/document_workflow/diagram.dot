@@ -1,0 +1,17 @@
+digraph DocumentWorkflow {
+    graph [rankdir=TB];
+    node [shape=box, style="rounded,filled"];
+
+    Draft [fillcolor="#E5F2FF"];
+    Review [fillcolor="#FFF4C1"];
+    Approved [fillcolor="#C1F2C7"];
+    Rejected [fillcolor="#FFCCCB"];
+    Published [fillcolor="#C1F2C7", shape=box];
+
+    Draft -> Review [label="submit"];
+    Review -> Approved [label="approve"];
+    Review -> Rejected [label="reject"];
+    Rejected -> Draft [label="revise"];
+    Approved -> Published [label="publish"];
+    Published -> Draft [label="new version"];
+}

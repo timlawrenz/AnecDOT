@@ -1,0 +1,1 @@
+Dependency graph showing module relationships with UI, API, Service, and Database layers

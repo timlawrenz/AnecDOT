@@ -1,0 +1,31 @@
+digraph Architecture {
+    graph [rankdir=TB, ranksep=0.8, nodesep=0.6];
+    node [shape=box, style=filled, fillcolor="#E8F4F8"];
+
+    subgraph cluster_presentation {
+        label="Presentation Layer";
+        style=filled;
+        fillcolor="#FFE5E5";
+        UI; Controller;
+    }
+
+    subgraph cluster_business {
+        label="Business Layer";
+        style=filled;
+        fillcolor="#E5FFE5";
+        Service; Logic;
+    }
+
+    subgraph cluster_data {
+        label="Data Layer";
+        style=filled;
+        fillcolor="#E5E5FF";
+        Repository; Database [shape=cylinder];
+    }
+
+    UI -> Controller;
+    Controller -> Service;
+    Service -> Logic;
+    Logic -> Repository;
+    Repository -> Database;
+}

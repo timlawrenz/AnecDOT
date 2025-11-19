@@ -1,0 +1,5 @@
+Source: DOT Language Guide for Devs and Analysts
+URL: https://www.danieleteti.it/post/dot-language-guide-for-devs-and-analysts-en/
+Category: workflow
+Type: Workflow
+Description: First example graph showing a simple process flow with error handling

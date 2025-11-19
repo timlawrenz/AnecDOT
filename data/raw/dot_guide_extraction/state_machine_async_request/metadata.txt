@@ -1,0 +1,5 @@
+Source: DOT Language Guide for Devs and Analysts
+URL: https://www.danieleteti.it/post/dot-language-guide-for-devs-and-analysts-en/
+Category: state_machine
+Type: State Machine
+Description: State machine modeling lifecycle of an asynchronous request with states: Idle, Loading, Ready, and Error

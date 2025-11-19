@@ -1,0 +1,5 @@
+Source: DOT Language Guide for Devs and Analysts
+URL: https://www.danieleteti.it/post/dot-language-guide-for-devs-and-analysts-en/
+Category: microservices
+Type: Microservices
+Description: Microservices architecture map showing Edge Gateway, Core Services, and Data layers with protocol labels

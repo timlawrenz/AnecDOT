@@ -1,0 +1,8 @@
+digraph MyFirstGraph {
+    node [shape=box, style=rounded, fillcolor=lightblue, style="rounded,filled"];
+    edge [color=blue];
+
+    Start -> Process -> End;
+    Process -> Error [style=dashed, label="on failure"];
+    Error -> Start [label="retry"];
+}

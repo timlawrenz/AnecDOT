@@ -1,0 +1,14 @@
+digraph UserSession {
+    graph [rankdir=LR];
+    node [shape=circle];
+
+    Anonymous -> LoggedIn [label="login"];
+    LoggedIn -> Active [label="activity"];
+    Active -> Idle [label="timeout"];
+    Idle -> Active [label="activity"];
+    Idle -> LoggedOut [label="session timeout"];
+    Active -> LoggedOut [label="logout"];
+    LoggedIn -> LockedOut [label="too many attempts"];
+    LockedOut -> Anonymous [label="unlock"];
+    LoggedOut -> Anonymous;
+}

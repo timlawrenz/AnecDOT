@@ -1,0 +1,1 @@
+Order processing finite state machine: new order, payment pending, processing, shipped, delivered, cancelled

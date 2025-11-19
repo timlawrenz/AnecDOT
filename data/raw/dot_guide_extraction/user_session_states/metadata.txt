@@ -1,0 +1,5 @@
+Source: DOT Language Guide for Devs and Analysts
+URL: https://www.danieleteti.it/post/dot-language-guide-for-devs-and-analysts-en/
+Category: authentication
+Type: Authentication
+Description: User session state machine: anonymous, logged in, active, idle, locked out

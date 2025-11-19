@@ -1,0 +1,18 @@
+digraph OrderFSM {
+    graph [rankdir=TB];
+    node [shape=circle, style=filled];
+
+    New [fillcolor="#C1F2C7"];
+    PaymentPending [fillcolor="#FFF4C1"];
+    Processing [fillcolor="#C1E4F2"];
+    Shipped [fillcolor="#E4C1F2"];
+    Delivered [fillcolor="#C1F2C7", shape=doublecircle];
+    Cancelled [fillcolor="#FFCCCB", shape=doublecircle];
+
+    New -> PaymentPending [label="submit"];
+    PaymentPending -> Processing [label="payment received"];
+    PaymentPending -> Cancelled [label="payment failed"];
+    Processing -> Shipped [label="dispatched"];
+    Shipped -> Delivered [label="confirmed"];
+    Processing -> Cancelled [label="cancelled"];
+}

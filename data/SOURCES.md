@@ -52,6 +52,15 @@ This file tracks all repositories and sources used to generate training examples
 - **Patterns**: Binary number validators, sorted sequences, suffix detection, divisibility checks
 - **Notes**: Uses custom FSM file format with natural language descriptions
 
+### 6. DOT Language Guide (Documentation)
+- **URL**: https://www.danieleteti.it/post/dot-language-guide-for-devs-and-analysts-en/
+- **Type**: Tutorial/Documentation
+- **Extracted**: 2025-11-19
+- **Examples Count**: 10 examples
+- **Description**: Professional DOT language guide with real-world examples
+- **Patterns**: State machines (TCP, async requests, user sessions), workflows (documents, orders), architecture diagrams, microservices maps
+- **Notes**: High-quality examples with detailed natural language descriptions
+
 ---
 
 ## Synthetic Sources
@@ -66,18 +75,19 @@ This file tracks all repositories and sources used to generate training examples
 
 ## Statistics
 
-**Total Pairs**: 98
-- Real extracted: 88
+**Total Pairs**: 108
+- Real extracted: 98
   - transitions: 10 (code, dot)
   - python-statemachine: 48 (4 code + 44 nl, dot)
   - automata: 18 (code, dot)
   - python-fsm: 3 (code, dot)
   - samsu_fsm: 9 (code, dot)
+  - dot_guide: 10 (nl, dot)
 - Synthetic: 10 (nl, dot)
 
 **By Type**:
 - (code, dot): 44 pairs
-- (nl, dot): 44 pairs  
+- (nl, dot): 54 pairs  
 - (synthetic nl, dot): 10 pairs
 
 **Last Updated**: 2025-11-19

@@ -1,0 +1,17 @@
+digraph TCP {
+    graph [rankdir=LR];
+    node [shape=circle];
+
+    CLOSED -> LISTEN [label="passive open"];
+    CLOSED -> SYN_SENT [label="active open"];
+    LISTEN -> SYN_RECEIVED [label="SYN"];
+    SYN_SENT -> ESTABLISHED [label="SYN+ACK"];
+    SYN_RECEIVED -> ESTABLISHED [label="ACK"];
+    ESTABLISHED -> FIN_WAIT_1 [label="close"];
+    ESTABLISHED -> CLOSE_WAIT [label="FIN"];
+    FIN_WAIT_1 -> FIN_WAIT_2 [label="ACK"];
+    CLOSE_WAIT -> LAST_ACK [label="close"];
+    FIN_WAIT_2 -> TIME_WAIT [label="FIN"];
+    LAST_ACK -> CLOSED [label="ACK"];
+    TIME_WAIT -> CLOSED [label="timeout"];
+}

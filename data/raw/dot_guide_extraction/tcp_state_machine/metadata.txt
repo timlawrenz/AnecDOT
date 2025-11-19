@@ -1,0 +1,5 @@
+Source: DOT Language Guide for Devs and Analysts
+URL: https://www.danieleteti.it/post/dot-language-guide-for-devs-and-analysts-en/
+Category: protocol
+Type: Protocol
+Description: TCP protocol state machine with standard states: CLOSED, LISTEN, SYN_SENT, ESTABLISHED, etc.

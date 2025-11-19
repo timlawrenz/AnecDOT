@@ -1,0 +1,34 @@
+digraph Micro {
+    graph [rankdir=LR, splines=true];
+    node [shape=box, style=filled, fillcolor="#F0F0F0"];
+
+    subgraph cluster_gateway {
+        label="Edge";
+        style=filled;
+        fillcolor="#FFE5CC";
+        Gateway;
+    }
+
+    subgraph cluster_services {
+        label="Services";
+        style=filled;
+        fillcolor="#E5F2FF";
+        AuthService;
+        OrderService;
+        PaymentService;
+    }
+
+    subgraph cluster_data {
+        label="Data";
+        style=filled;
+        fillcolor="#E5FFE5";
+        UserDB [shape=cylinder];
+        OrderDB [shape=cylinder];
+    }
+
+    Gateway -> AuthService [label="HTTP"];
+    Gateway -> OrderService [label="gRPC"];
+    OrderService -> PaymentService [label="REST"];
+    AuthService -> UserDB;
+    OrderService -> OrderDB;
+}

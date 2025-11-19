@@ -1,0 +1,16 @@
+digraph Flow {
+    graph [rankdir=TB, nodesep=0.6];
+    node [fontname="Arial"];
+
+    Start   [shape=oval, style=filled, fillcolor="#C1F2C7"];
+    Check   [shape=diamond, label="Valid input?"];
+    Process [shape=box, style=rounded];
+    Error   [shape=box, style=filled, fillcolor="#FFCCCB"];
+    End     [shape=oval, style=filled, fillcolor="#D3D3D3"];
+
+    Start -> Check;
+    Check -> Process [label="yes"];
+    Check -> Error [label="no"];
+    Process -> End;
+    Error -> Start [label="retry"];
+}
