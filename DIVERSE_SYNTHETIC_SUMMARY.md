@@ -2,7 +2,7 @@
 
 ## Summary
 - **Date**: 2025-01-19
-- **Generator**: Gemma 2 27B (via Ollama)
+- **Generator**: Gemma3:27b (via Ollama)
 - **Prompt Strategy**: Few-shot with diverse graph types
 - **Validation**: DOT syntax checking via `dot -Tpng`
 
@@ -35,7 +35,7 @@
 
 ## Key Findings
 
-1. **LLM Knowledge**: Gemma 2 27B has strong DOT syntax knowledge without fine-tuning
+1. **LLM Knowledge**: Gemma3:27b has strong DOT syntax knowledge without fine-tuning
 2. **Diversity**: Few-shot prompting successfully generates varied graph structures
 3. **Validation**: Compiler-based validation ensures syntactic correctness
 4. **Limitation**: No semantic correctness validation yet (Phase II.1)
