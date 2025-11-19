@@ -1,0 +1,10 @@
+digraph "even_binary" {
+	s0 [shape=doublecircle]
+	s1 [shape=circle]
+	_dummy_for_initial_state_ [shape=point, width=0, style=invis] // A dummy node used to for the initial state arrow
+	_dummy_for_initial_state_ -> s0
+	s0 -> s0 [label="0"]
+	s0 -> s1 [label="1"]
+	s1 -> s1 [label="1"]
+	s1 -> s0 [label="0"]
+}

@@ -1,0 +1,1 @@
+Finite state machine accepting strings ending with '00'

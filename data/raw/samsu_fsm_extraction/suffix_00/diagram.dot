@@ -1,0 +1,13 @@
+digraph "suffix_00" {
+	s0 [shape=circle]
+	s2 [shape=doublecircle]
+	s1 [shape=circle]
+	_dummy_for_initial_state_ [shape=point, width=0, style=invis] // A dummy node used to for the initial state arrow
+	_dummy_for_initial_state_ -> s0
+	s0 -> s1 [label="0"]
+	s0 -> s0 [label="*"]
+	s2 -> s2 [label="0"]
+	s2 -> s0 [label="*"]
+	s1 -> s2 [label="0"]
+	s1 -> s0 [label="*"]
+}

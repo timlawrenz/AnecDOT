@@ -1,0 +1,5 @@
+Source: Samsu-F/finite_state_machines
+File: sorted_0-3.fsm
+Description: Finite state machine accepting sorted sequences of digits 0-3
+Type: Deterministic Finite Automaton
+States: 4

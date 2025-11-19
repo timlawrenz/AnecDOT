@@ -1,0 +1,5 @@
+Source: Samsu-F/finite_state_machines
+File: even_binary.fsm
+Description: Finite state machine accepting binary numbers with even number of ones
+Type: Deterministic Finite Automaton
+States: 2

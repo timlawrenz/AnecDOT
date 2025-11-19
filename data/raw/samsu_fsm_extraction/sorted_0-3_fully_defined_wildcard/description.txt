@@ -1,0 +1,1 @@
+Finite state machine accepting sorted sequences of digits 0-3 (with wildcards)

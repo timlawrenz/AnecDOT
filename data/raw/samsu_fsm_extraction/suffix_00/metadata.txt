@@ -1,0 +1,5 @@
+Source: Samsu-F/finite_state_machines
+File: suffix_00.fsm
+Description: Finite state machine accepting strings ending with '00'
+Type: Deterministic Finite Automaton
+States: 3

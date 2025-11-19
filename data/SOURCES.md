@@ -42,6 +42,16 @@ This file tracks all repositories and sources used to generate training examples
 - **Patterns**: Protocol states (TCP/IP), Moore machines, Mealy machines, real-world systems
 - **Notes**: Extracted from README examples
 
+### 5. Samsu-F/finite_state_machines
+- **URL**: https://github.com/Samsu-F/finite_state_machines
+- **Stars**: Small personal repo
+- **License**: MIT
+- **Extracted**: 2025-11-19
+- **Examples Count**: 9 DFA examples
+- **Description**: Display and run deterministic finite automata with custom FSM syntax
+- **Patterns**: Binary number validators, sorted sequences, suffix detection, divisibility checks
+- **Notes**: Uses custom FSM file format with natural language descriptions
+
 ---
 
 ## Synthetic Sources
@@ -56,16 +66,17 @@ This file tracks all repositories and sources used to generate training examples
 
 ## Statistics
 
-**Total Pairs**: 89
-- Real extracted: 79
+**Total Pairs**: 98
+- Real extracted: 88
   - transitions: 10 (code, dot)
   - python-statemachine: 48 (4 code + 44 nl, dot)
   - automata: 18 (code, dot)
   - python-fsm: 3 (code, dot)
+  - samsu_fsm: 9 (code, dot)
 - Synthetic: 10 (nl, dot)
 
 **By Type**:
-- (code, dot): 35 pairs
+- (code, dot): 44 pairs
 - (nl, dot): 44 pairs  
 - (synthetic nl, dot): 10 pairs
 

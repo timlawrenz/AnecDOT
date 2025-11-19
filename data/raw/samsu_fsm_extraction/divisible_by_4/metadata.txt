@@ -1,0 +1,5 @@
+Source: Samsu-F/finite_state_machines
+File: divisible_by_4.fsm
+Description: Finite state machine accepting decimal numbers divisible by 4
+Type: Deterministic Finite Automaton
+States: 5

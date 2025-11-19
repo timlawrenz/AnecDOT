@@ -1,0 +1,10 @@
+digraph "even_number_of_ones" {
+	even [shape=doublecircle]
+	odd [shape=circle]
+	_dummy_for_initial_state_ [shape=point, width=0, style=invis] // A dummy node used to for the initial state arrow
+	_dummy_for_initial_state_ -> even
+	even -> even [label="0"]
+	even -> odd [label="1"]
+	odd -> odd [label="0"]
+	odd -> even [label="1"]
+}

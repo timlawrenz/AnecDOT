@@ -1,0 +1,5 @@
+Source: Samsu-F/finite_state_machines
+File: sorted.fsm
+Description: Finite state machine accepting sorted sequences
+Type: Deterministic Finite Automaton
+States: 10

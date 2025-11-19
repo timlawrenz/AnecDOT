@@ -1,0 +1,5 @@
+Source: Samsu-F/finite_state_machines
+File: even_number_of_ones.fsm
+Description: Finite state machine accepting strings with even number of ones
+Type: Deterministic Finite Automaton
+States: 2
