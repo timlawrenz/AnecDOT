@@ -1,0 +1,23 @@
+digraph SoftwareDependencies {
+  rankdir=LR;
+  node [shape=box];
+
+  "Frontend" -> "UI Components";
+  "Frontend" -> "API Client";
+  "API Client" -> "Backend API";
+  "Backend API" -> "Database Layer";
+  "Database Layer" -> "PostgreSQL";
+  "Backend API" -> "Authentication Service";
+  "Authentication Service" -> "Database Layer";
+  "Reporting Service" -> "Backend API";
+  "Reporting Service" -> "Data Visualization";
+  "Data Visualization" -> "UI Components";
+  "CI/CD Pipeline" -> "Frontend";
+  "CI/CD Pipeline" -> "Backend API";
+  "CI/CD Pipeline" -> "Reporting Service";
+  "Logging Service" -> "Backend API";
+  "Logging Service" -> "Frontend";
+  "Monitoring Service" -> "Backend API";
+  "Monitoring Service" -> "Frontend";
+  "PostgreSQL" [shape=cylinder];
+}

@@ -1,0 +1,31 @@
+digraph session_lifecycle {
+    rankdir=LR;
+    node [shape=circle];
+
+    subgraph cluster_states {
+        label = "Session States";
+        login [label="Login"];
+        active [label="Active"];
+        idle [label="Idle"];
+        locked [label="Locked"];
+        logout [label="Logout", shape=doublecircle];
+        expired [label="Expired", shape=doublecircle];
+    }
+
+    login -> active [label="Successful Authentication"];
+    active -> idle [label="User Inactivity (Timeout)"];
+    active -> locked [label="Failed Authentication Attempt"];
+    idle -> active [label="User Action"];
+    idle -> locked [label="Repeated Failed Attempts"];
+    locked -> active [label="Successful Re-authentication"];
+    locked -> expired [label="Account Disabled"];
+    active -> logout [label="Explicit Logout"];
+    idle -> logout [label="Explicit Logout"];
+    logout -> expired [label="Session Terminated"];
+    active -> expired [label="Server Timeout/Force Logout"];
+    idle -> expired [label="Extended Inactivity/Force Logout"];
+
+    // Add some edge attributes for clarity
+    edge [fontname="Arial", fontsize="10"];
+    node [fontname="Arial", fontsize="10"];
+}

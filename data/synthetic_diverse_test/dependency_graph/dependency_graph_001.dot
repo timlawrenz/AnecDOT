@@ -1,0 +1,20 @@
+digraph CoursePrerequisites {
+    rankdir=LR;
+    node [shape=box];
+
+    "Calculus I" -> "Calculus II";
+    "Calculus II" -> "Differential Equations";
+    "Linear Algebra" -> "Differential Equations";
+    "Linear Algebra" -> "Machine Learning";
+    "Probability & Statistics" -> "Machine Learning";
+    "Data Structures" -> "Algorithms";
+    "Algorithms" -> "Machine Learning";
+    "Data Structures" -> "Operating Systems";
+    "Operating Systems" -> "Computer Networks";
+    "Computer Networks" -> "Distributed Systems";
+    "Database Systems" -> "Data Mining";
+    "Calculus I" -> "Physics I";
+    "Physics I" -> "Physics II";
+    "Data Mining" -> "Machine Learning";
+    "Calculus II" -> "Numerical Methods";
+}

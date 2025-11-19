@@ -1,0 +1,14 @@
+{
+  "graph_type": "data_structure",
+  "pattern": "Binary search tree with values",
+  "description": "Binary trees, linked lists, graphs",
+  "constraints": {
+    "min_nodes": 4,
+    "max_nodes": 12,
+    "hierarchical": true,
+    "node_labels": "values"
+  },
+  "model": "gemma3:27b",
+  "temperature": 0.8,
+  "nl_description": "Binary search tree with values"
+}

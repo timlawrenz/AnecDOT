@@ -1,0 +1,56 @@
+digraph LayeredApplication {
+  rankdir=TB;
+  node [shape=box, style=rounded];
+
+  // Presentation Layer
+  subgraph cluster_presentation {
+    label = "Presentation Layer";
+    style = "rounded,filled";
+    fillcolor = "#E6F9FF";
+
+    "WebUI" [label="Web UI"];
+    "MobileApp" [label="Mobile App"];
+    "API Gateway" [label="API Gateway"];
+  }
+
+  // Business Layer
+  subgraph cluster_business {
+    label = "Business Layer";
+    style = "rounded,filled";
+    fillcolor = "#D1E8FF";
+
+    "UserManagement" [label="User Management"];
+    "OrderProcessing" [label="Order Processing"];
+    "ProductCatalog" [label="Product Catalog"];
+  }
+
+  // Data Layer
+  subgraph cluster_data {
+    label = "Data Layer";
+    style = "rounded,filled";
+    fillcolor = "#C3D5FF";
+
+    "UserDB" [label="User Database"];
+    "OrderDB" [label="Order Database"];
+    "ProductDB" [label="Product Database"];
+  }
+
+  // Connections
+
+  // Presentation -> Business
+  "WebUI" -> "UserManagement" [label="Authentication/Profile"];
+  "WebUI" -> "OrderProcessing" [label="Place/View Orders"];
+  "WebUI" -> "ProductCatalog" [label="Browse Products"];
+  "MobileApp" -> "UserManagement" [label="Authentication/Profile"];
+  "MobileApp" -> "OrderProcessing" [label="Place/View Orders"];
+  "MobileApp" -> "ProductCatalog" [label="Browse Products"];
+  "API Gateway" -> "UserManagement" [label="Authentication/Profile"];
+  "API Gateway" -> "OrderProcessing" [label="Order Requests"];
+  "API Gateway" -> "ProductCatalog" [label="Product Data"];
+
+  // Business -> Data
+  "UserManagement" -> "UserDB" [label="User Data"];
+  "OrderProcessing" -> "OrderDB" [label="Order Data"];
+  "OrderProcessing" -> "ProductDB" [label="Product Information"];
+  "ProductCatalog" -> "ProductDB" [label="Product Data"];
+}

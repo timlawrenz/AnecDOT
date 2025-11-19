@@ -1,0 +1,45 @@
+digraph MicroservicesArchitecture {
+  rankdir=LR;
+  node [shape=box, style=rounded];
+
+  subgraph cluster_Frontend {
+    label = "Frontend Tier";
+    style=dashed;
+    Frontend [label="Frontend Application"];
+    API_Gateway [label="API Gateway"];
+  }
+
+  subgraph cluster_Backend {
+    label = "Backend Services";
+    style=dashed;
+    UserService [label="User Service"];
+    ProductService [label="Product Service"];
+    OrderService [label="Order Service"];
+    PaymentService [label="Payment Service"];
+    NotificationService [label="Notification Service"];
+  }
+
+  subgraph cluster_Data {
+    label = "Data Storage";
+    style=dashed;
+    UserDB [label="User Database"];
+    ProductDB [label="Product Database"];
+    OrderDB [label="Order Database"];
+  }
+
+  // Connections
+  Frontend -> API_Gateway [label="Requests"];
+  API_Gateway -> UserService [label="User Data"];
+  API_Gateway -> ProductService [label="Product Data"];
+  API_Gateway -> OrderService [label="Order Management"];
+
+  UserService -> UserDB [label="Read/Write"];
+  ProductService -> ProductDB [label="Read/Write"];
+  OrderService -> ProductService [label="Product Details"];
+  OrderService -> UserService [label="User Information"];
+  OrderService -> PaymentService [label="Payment Processing"];
+  OrderService -> NotificationService [label="Order Updates"];
+  OrderService -> OrderDB [label="Read/Write"];
+  PaymentService -> OrderService [label="Payment Status"];
+  NotificationService -> Frontend [label="Push Notifications"];
+}

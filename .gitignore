@@ -10,3 +10,5 @@ ENV/
 
 # Data files
 data/*.jsonl
+repos/
+data/raw/automata-caleb531/

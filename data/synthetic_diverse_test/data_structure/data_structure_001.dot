@@ -1,0 +1,37 @@
+digraph Linked_List_Traversal {
+    rankdir=LR;
+    node [shape=box];
+
+    node_0 [label="Head"];
+    node_1 [label="10"];
+    node_2 [label="20"];
+    node_3 [label="30"];
+    node_4 [label="40"];
+    node_5 [label="50"];
+    node_6 [label="Null"];
+
+
+    node_0 -> node_1 [label="next"];
+    node_1 -> node_2 [label="next"];
+    node_2 -> node_3 [label="next"];
+    node_3 -> node_4 [label="next"];
+    node_4 -> node_5 [label="next"];
+    node_5 -> node_6 [label="next"];
+
+    subgraph cluster_Traversal {
+        label = "Traversal Process";
+        node [shape=ellipse];
+        node_t1 [label="current = Head"];
+        node_t2 [label="current != Null"];
+        node_t3 [label="process(current->value)"];
+        node_t4 [label="current = current->next"];
+    }
+
+    node_0 -> node_t1;
+    node_t1 -> node_t2;
+    node_t2 -> node_t3 [label="true"];
+    node_t3 -> node_t4;
+    node_t4 -> node_t2;
+    node_t2 -> node_6 [label="false"];
+
+}

@@ -1,0 +1,29 @@
+digraph network_protocol_states {
+  rankdir=LR;
+  node [shape=circle];
+
+  // States
+  state_initial [label="Initial"];
+  state_connecting [label="Connecting"];
+  state_connected [label="Connected"];
+  state_disconnecting [label="Disconnecting"];
+  state_closed [label="Closed"];
+  state_reconnecting [label="Reconnecting"];
+
+  // Transitions
+  state_initial -> state_connecting [label="Initiate Connection"];
+  state_connecting -> state_connected [label="Connection Established"];
+  state_connecting -> state_reconnecting [label="Connection Failed"];
+  state_connected -> state_disconnecting [label="Initiate Disconnect"];
+  state_disconnecting -> state_closed [label="Connection Closed"];
+  state_connected -> state_disconnecting [label="Timeout"];
+  state_reconnecting -> state_connecting [label="Retry"];
+  state_reconnecting -> state_closed [label="Abandon"];
+
+  // Styling (optional, for visual clarity)
+  node [style=filled];
+  node [fillcolor="#e0e0e0"];
+  state_initial [fillcolor="#90ee90"]; // Light green for start
+  state_closed [fillcolor="#f08080"]; // Light red for end
+
+}

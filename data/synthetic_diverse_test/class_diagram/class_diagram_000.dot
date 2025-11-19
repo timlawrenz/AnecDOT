@@ -1,0 +1,26 @@
+digraph InheritanceHierarchy {
+    rankdir=TB;
+    node [shape=record];
+
+    // Nodes (Classes)
+    "Animal" [label="{Animal| +name: String | +eat(): void}"];
+    "Mammal" [label="{Mammal| +hasFur: boolean}"];
+    "Reptile" [label="{Reptile| +hasScales: boolean}"];
+    "Bird" [label="{Bird| +hasFeathers: boolean | +fly(): void}"];
+    "Dog" [label="{Dog| +breed: String | +bark(): void}"];
+    "Cat" [label="{Cat| +isLazy: boolean}"];
+    "Snake" [label="{Snake| +isVenomous: boolean}"];
+    "Eagle" [label="{Eagle| +wingspan: float}"];
+
+    // Edges (Relationships)
+    "Animal" -> "Mammal" [label="Inherits", arrowhead=empty];
+    "Animal" -> "Reptile" [label="Inherits", arrowhead=empty];
+    "Animal" -> "Bird" [label="Inherits", arrowhead=empty];
+
+    "Mammal" -> "Dog" [label="Inherits", arrowhead=empty];
+    "Mammal" -> "Cat" [label="Inherits", arrowhead=empty];
+
+    "Reptile" -> "Snake" [label="Inherits", arrowhead=empty];
+
+    "Bird" -> "Eagle" [label="Inherits", arrowhead=empty];
+}

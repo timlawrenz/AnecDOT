@@ -1,0 +1,40 @@
+digraph DocumentApprovalWorkflow {
+  rankdir=LR;
+  node [shape=box];
+
+  subgraph cluster_workflow {
+    label = "Document Approval Workflow";
+    style = "rounded,filled";
+    fillcolor = "#f0f0f0";
+
+    Start [label="Document Created"];
+    Step1 [label="Initial Review by Author"];
+    Step2 [label="Department Head Review"];
+    Decision1 [label="Approval Needed?", shape=diamond];
+    Step3 [label="Legal Review"];
+    Step4 [label="Compliance Review"];
+    Decision2 [label="All Reviews Passed?", shape=diamond];
+    Step5 [label="Final Approval - Executive"];
+    Step6 [label="Document Published"];
+    Reject [label="Document Rejected", shape=box, style=filled, fillcolor="#fdd"];
+    Rework [label="Rework Required", shape=box, style=filled, fillcolor="#ffe"];
+    
+
+    Start -> Step1;
+    Step1 -> Step2;
+    Step2 -> Decision1;
+    Decision1 -> Step3 [label="Yes"];
+    Decision1 -> Reject [label="No"];
+    Step3 -> Step4;
+    Step4 -> Decision2;
+    Decision2 -> Step5 [label="Yes"];
+    Decision2 -> Rework [label="No"];
+    Step5 -> Step6;
+    Rework -> Step1;
+    Reject -> "End";
+    Step6 -> "End";
+
+  }
+
+  "End" [shape=doublecircle, label="End"];
+}

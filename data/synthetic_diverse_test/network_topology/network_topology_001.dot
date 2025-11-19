@@ -1,0 +1,17 @@
+graph RingTopology {
+  node [shape=box, style=filled, fillcolor=lightskyblue];
+
+  // Nodes representing network devices
+  "RouterA" [label="Router A\n192.168.1.1"];
+  "RouterB" [label="Router B\n192.168.1.2"];
+  "RouterC" [label="Router C\n192.168.1.3"];
+  "RouterD" [label="Router D\n192.168.1.4"];
+  "RouterE" [label="Router E\n192.168.1.5"];
+
+  // Edges representing connections - undirected
+  "RouterA" -- "RouterB" [label="1 Gbps Link"];
+  "RouterB" -- "RouterC" [label="1 Gbps Link"];
+  "RouterC" -- "RouterD" [label="1 Gbps Link"];
+  "RouterD" -- "RouterE" [label="1 Gbps Link"];
+  "RouterE" -- "RouterA" [label="1 Gbps Link"];
+}

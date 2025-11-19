@@ -1,0 +1,28 @@
+digraph CompositionRelationships {
+  rankdir=TD;
+  node [shape=class];
+
+  // Classes
+  Engine [label="Engine\n+ start()\n+ stop()"];
+  Car [label="Car\n+ drive()\n+ brake()"];
+  Wheel [label="Wheel\n+ rotate()"];
+  Body [label="Body\n+ color : string"];
+  Driver [label="Driver\n+ steer()\n+ accelerate()"];
+  NavigationSystem [label="NavigationSystem\n+ calculateRoute()"];
+  Dashboard [label="Dashboard\n+ displayInfo()"];
+
+
+  // Relationships - Composition (filled arrow)
+  Engine -> Car [label="has a", arrowhead=vee, style=filled, color=blue];
+  Wheel -> Car [label="has a", arrowhead=vee, style=filled, color=blue];
+  Body -> Car [label="has a", arrowhead=vee, style=filled, color=blue];
+  NavigationSystem -> Dashboard [label="has a", arrowhead=vee, style=filled, color=blue];
+  Dashboard -> Car [label="has a", arrowhead=vee, style=filled, color=blue];
+
+  // Association (normal arrow)
+  Driver -> Car [label="drives", arrowhead=normal, color=black];
+
+  // Styling
+  edge [fontname="Arial", fontsize="10"];
+  node [fontname="Arial", fontsize="10"];
+}

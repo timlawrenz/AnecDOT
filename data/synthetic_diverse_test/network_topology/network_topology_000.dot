@@ -1,0 +1,24 @@
+graph StarNetwork {
+  node [shape=box style=filled];
+
+  // Central Node (Hub/Switch)
+  "Hub" [label="Hub", fillcolor=lightgrey];
+
+  // Peripheral Nodes (Clients/Devices)
+  "Client1" [label="Client 1", fillcolor=lightblue];
+  "Client2" [label="Client 2", fillcolor=lightblue];
+  "Client3" [label="Client 3", fillcolor=lightblue];
+  "Client4" [label="Client 4", fillcolor=lightblue];
+  "Client5" [label="Client 5", fillcolor=lightblue];
+
+
+  // Edges (Connections)
+  "Hub" -- "Client1" [label="1 Gbps"];
+  "Hub" -- "Client2" [label="1 Gbps"];
+  "Hub" -- "Client3" [label="1 Gbps"];
+  "Hub" -- "Client4" [label="1 Gbps"];
+  "Hub" -- "Client5" [label="1 Gbps"];
+
+  label = "Star Network Topology";
+  labelloc = "t";
+}

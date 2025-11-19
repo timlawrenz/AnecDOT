@@ -1,0 +1,28 @@
+digraph UserRegistration {
+  rankdir=TB;
+  node [shape=box];
+
+  Start [label="Start Registration"];
+  EnterDetails [label="Enter User Details (Email, Name, Password)"];
+  ValidateInput [label="Validate Input"];
+  EmailExistsCheck [label="Email Already Registered?"];
+  CreateAccount [label="Create Account"];
+  SendVerificationEmail [label="Send Verification Email"];
+  VerifyEmail [label="User Verifies Email"];
+  AccountActive [label="Account Activated"];
+  LoginRedirect [label="Redirect to Login"];
+  ErrorDisplay [label="Display Error Message"];
+
+  Start -> EnterDetails;
+  EnterDetails -> ValidateInput;
+  ValidateInput -> EmailExistsCheck;
+
+  EmailExistsCheck -> CreateAccount [label="No"];
+  EmailExistsCheck -> ErrorDisplay [label="Yes"];
+  ErrorDisplay -> EnterDetails [label="Retry"];
+
+  CreateAccount -> SendVerificationEmail;
+  SendVerificationEmail -> VerifyEmail;
+  VerifyEmail -> AccountActive;
+  AccountActive -> LoginRedirect;
+}

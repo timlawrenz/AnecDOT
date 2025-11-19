@@ -1,0 +1,14 @@
+digraph automaton {
+  rankdir=LR;
+  node [shape=circle];
+
+  q0 [label="q0\n(Even 'a's)"];
+  q1 [label="q1\n(Odd 'a's)"];
+
+  q0 -> q0 [label="b"];
+  q0 -> q1 [label="a"];
+  q1 -> q0 [label="a"];
+  q1 -> q1 [label="b"];
+
+  q0 [style=doublecircle]; // Accept state
+}

@@ -1,0 +1,71 @@
+digraph AnimalClassification {
+  rankdir=TB;
+  node [shape=box];
+
+  // Root Node
+  "Is it a Vertebrate?" [label="Is it a Vertebrate?", shape=box];
+
+  // Vertebrate Branch
+  "Is it a Vertebrate?" -> "Yes" [label="Yes"];
+  "Is it a Vertebrate?" -> "No" [label="No"];
+
+  // Invertebrate Branch (No)
+  "No" -> "Is it an Insect?" [label="Yes"];
+  "No" -> "Other Invertebrates" [label="No"];
+
+  // Insect Branch
+  "Is it an Insect?" -> "Yes" [label="Yes"];
+  "Is it an Insect?" -> "No" [label="No"];
+  
+  "Yes" -> "Insect Classification" [label="Yes"];
+  "No" -> "Other Invertebrates" [label="No"];
+
+  // Vertebrate Branches
+  "Yes" -> "Is it Warm-Blooded?" [label="Yes"];
+  "Yes" -> "Is it a Fish?" [label="No"];
+
+  // Fish Branch
+  "Is it a Fish?" -> "Yes" [label="Yes"];
+  "Is it a Fish?" -> "No" [label="No"];
+  "Yes" -> "Fish" [label="Yes"];
+  "No" -> "Amphibian or Reptile?" [label="No"];
+  
+  //Warm-blooded Branch
+  "Is it Warm-Blooded?" -> "Yes" [label="Yes"];
+  "Is it Warm-Blooded?" -> "No" [label="No"];
+  
+  //Mammal/Bird
+  "Yes" -> "Does it have Fur or Hair?" [label="Yes"];
+  "Yes" -> "Bird Classification" [label="No"];
+
+  //Fur/Hair
+  "Does it have Fur or Hair?" -> "Yes" [label="Yes"];
+  "Does it have Fur or Hair?" -> "No" [label="No"];
+  "Yes" -> "Mammal Classification" [label="Yes"];
+  "No" -> "Marine Mammal?" [label="No"];
+
+  //Marine Mammal?
+  "Marine Mammal?" -> "Yes" [label="Yes"];
+  "Marine Mammal?" -> "Terrestrial Mammal" [label="No"];
+  "Yes" -> "Whale or Dolphin" [label="Yes"];
+  "No" -> "Terrestrial Mammal" [label="No"];
+
+  //Amphibian/Reptile
+  "Amphibian or Reptile?" -> "Does it lay eggs?" [label="Yes"];
+  "Amphibian or Reptile?" -> "Reptile Classification" [label="No"];
+  
+  //Eggs?
+  "Does it lay eggs?" -> "Yes" [label="Yes"];
+  "Does it lay eggs?" -> "Amphibian Classification" [label="No"];
+
+  //Leaf Nodes (Decisions)
+  "Fish" [label="Fish", shape=oval];
+  "Amphibian Classification" [label="Amphibian", shape=oval];
+  "Reptile Classification" [label="Reptile", shape=oval];
+  "Bird Classification" [label="Bird", shape=oval];
+  "Mammal Classification" [label="Mammal", shape=oval];
+  "Terrestrial Mammal" [label="Terrestrial Mammal", shape=oval];
+  "Whale or Dolphin" [label="Whale/Dolphin", shape=oval];
+  "Insect Classification" [label="Insect", shape=oval];
+  "Other Invertebrates" [label="Other Invertebrates", shape=oval];
+}
