@@ -1,0 +1,3 @@
+Source: caleb531/automata test suite
+Type: DFA
+Description: This DFA accepts all words which contain either zero or one occurrence of 1

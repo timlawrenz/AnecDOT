@@ -1,0 +1,33 @@
+digraph "" {
+	graph [rankdir=LR,
+		ratio=0.3,
+		title="TCP IP"
+	];
+	node [height=1.2,
+		label="\N",
+		shape=circle
+	];
+	CLOSED -> LISTEN	[label="passive\nopen"];
+	CLOSED -> "SYN SENT"	[label="send SYN"];
+	LISTEN -> "SYN RCVD"	[label="recv SYN,\nsend\nSYN+ACK"];
+	LISTEN -> "SYN SENT"	[label="send SYN"];
+	"SYN RCVD" -> LISTEN	[label="recv RST"];
+	"SYN RCVD" -> ESTABLISHED	[label="recv ACK"];
+	"SYN RCVD" -> "FIN WAIT 1"	[label="send FIN"];
+	ESTABLISHED -> "FIN WAIT 1"	[label="send FIN"];
+	ESTABLISHED -> "CLOSE WAIT"	[label="recv FIN,\nsend ACK"];
+	"SYN SENT" -> CLOSED	[label="close /\ntimeout"];
+	"SYN SENT" -> "SYN RCVD"	[label="recv SYN,\nsend\nSYN+ACK"];
+	"SYN SENT" -> ESTABLISHED	[label="recv SYN+ACK,\nsend ACK"];
+	"FIN WAIT 1" -> "FIN WAIT 2"	[label="recv ACK"];
+	"FIN WAIT 1" -> "TIME WAIT"	[label="recv FIN, ACK\n send ACK"];
+	"FIN WAIT 1" -> CLOSING	[label="send ACK"];
+	"FIN WAIT 2" -> "TIME WAIT"	[label="recv FIN,\nsend ACK"];
+	"TIME WAIT" -> CLOSED	[label="(wait)"];
+	CLOSING -> "TIME WAIT"	[label="recv\nACK"];
+	"CLOSE WAIT" -> "LAST ACK"	[label="send FIN"];
+	"LAST ACK" -> CLOSED	[label="recv ACK"];
+	null	[label=" ",
+		shape=plaintext];
+	null -> CLOSED;
+}

@@ -1,0 +1,21 @@
+digraph "" {
+	graph [rankdir=LR,
+		ratio=0.3,
+		title="Binary addition"
+	];
+	node [height=1.2,
+		label="\N",
+		shape=circle
+	];
+	"no carry" -> "no carry"	[label="(1, 0) / 1"];
+	"no carry" -> "no carry"	[label="(0, 1) / 1"];
+	"no carry" -> "no carry"	[label="(0, 0) / 0"];
+	"no carry" -> carry	[label="(1, 1) / 0"];
+	carry -> "no carry"	[label="(0, 0) / 1"];
+	carry -> carry	[label="(1, 1) / 1"];
+	carry -> carry	[label="(0, 1) / 0"];
+	carry -> carry	[label="(1, 0) / 0"];
+	null	[label=" ",
+		shape=plaintext];
+	null -> "no carry";
+}

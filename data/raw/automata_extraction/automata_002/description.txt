@@ -1,0 +1,1 @@
+This DFA accepts all words which contain either zero or one occurrence of 1

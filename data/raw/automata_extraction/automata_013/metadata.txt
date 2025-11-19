@@ -1,0 +1,3 @@
+Source: caleb531/automata test suite
+Type: DFA
+Description: dfa2.states is a frozenset of frozensets self.assertTrue(repr(dfa2))  @params(True, False) def test_iter_finite(self, as_partial: bool) -> None: """ Test that DFA for finite language generates all words """ language = { "aa", "aaa", "aaba", "aabbb", "abaa", "ababb", "abbab", "baa", "babb", "bbaa", "bbabb", "bbbab", } dfa = DFA.from_finite_language({"a", "b"}, language, as_partial=as_partial) generated_set = {word for word in dfa} self.assertEqual(generated_set, language)  def test_iter_infinite(self) -> None: """ Test that language that avoids the pattern '11' generates the correct values in correct order """

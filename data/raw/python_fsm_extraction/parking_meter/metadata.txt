@@ -1,0 +1,3 @@
+Source: oozie/python-fsm README
+Type: MooreMachine
+Description: Dublin City Council parking meter (Moore Machine) for coin-operated ticket system

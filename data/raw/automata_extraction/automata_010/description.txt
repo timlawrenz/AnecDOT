@@ -1,0 +1,1 @@
+This DFA accepts all words with ones and zeroes. The two states can be merged into one.

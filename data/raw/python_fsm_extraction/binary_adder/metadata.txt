@@ -1,0 +1,3 @@
+Source: oozie/python-fsm README
+Type: MealyMachine
+Description: Binary adder (Mealy Machine) implementing single-bit addition with carry

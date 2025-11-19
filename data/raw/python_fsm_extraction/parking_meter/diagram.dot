@@ -1,0 +1,24 @@
+digraph "" {
+	graph [rankdir=LR,
+		ratio=0.3,
+		title="Parking Meter"
+	];
+	node [height=1.2,
+		label="\N",
+		shape=circle
+	];
+	Ready -> Verify	[label="coin inserted"];
+	Verify -> "Reject coin"	[label=invalid];
+	Verify -> "add value\rto ticket"	[label=valid];
+	"Await\naction" -> Verify	[label=coin];
+	"Await\naction" -> "Print ticket"	[label=print];
+	"Await\naction" -> "Return\nmoney"	[label=abort];
+	"Await\naction" -> "Return\nmoney"	[label=timeout];
+	"Print ticket" -> Ready;
+	"Return\nmoney" -> Ready;
+	"Reject coin" -> "Await\naction";
+	"add value\rto ticket" -> "Await\naction";
+	null	[label=" ",
+		shape=plaintext];
+	null -> Ready;
+}

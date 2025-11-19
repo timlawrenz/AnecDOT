@@ -1,0 +1,3 @@
+Source: caleb531/automata test suite
+Type: DFA
+Description: This DFA represents the empty language

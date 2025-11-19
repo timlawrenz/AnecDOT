@@ -1,0 +1,1 @@
+This DFA accepts all binary strings except the empty string

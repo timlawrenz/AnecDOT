@@ -1,0 +1,1 @@
+Binary adder (Mealy Machine) implementing single-bit addition with carry

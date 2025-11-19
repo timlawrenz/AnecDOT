@@ -1,0 +1,1 @@
+This DFA accepts all words which contain at least four occurrences of 1

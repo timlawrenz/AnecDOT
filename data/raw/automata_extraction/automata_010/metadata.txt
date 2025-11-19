@@ -1,0 +1,3 @@
+Source: caleb531/automata test suite
+Type: DFA
+Description: This DFA accepts all words with ones and zeroes. The two states can be merged into one.

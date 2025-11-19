@@ -1,0 +1,3 @@
+Source: caleb531/automata test suite
+Type: DFA
+Description: This DFA accepts all words which contain at least four occurrences of 1
