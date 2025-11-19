@@ -1,0 +1,58 @@
+digraph medical_diagnosis_tree {
+  rankdir=TB;
+  node [shape=box];
+
+  // Root Node
+  "Patient presents with symptoms" [label="Patient presents with symptoms"];
+
+  // Level 1
+  "Fever?" [label="Fever?"];
+  "Cough?" [label="Cough?"];
+
+  // Level 2
+  "Severity of Fever" [label="Severity of Fever\n(High/Low)"];
+  "Type of Cough" [label="Type of Cough\n(Dry/Productive)"];
+  "Shortness of Breath?" [label="Shortness of Breath?"];
+  "Chest Pain?" [label="Chest Pain?"];
+
+  // Level 3
+  "Rash Present?" [label="Rash Present?"];
+  "Sputum Color?" [label="Sputum Color\n(Clear/Yellow/Green)"];
+  "Oxygen Saturation" [label="Oxygen Saturation\n(<90% / >=90%)"];
+  "Pain Location" [label="Pain Location\n(Chest/Back/Side)"];
+
+  // Leaves (Decisions)
+  "Common Cold" [label="Common Cold", shape=oval];
+  "Influenza" [label="Influenza", shape=oval];
+  "Pneumonia" [label="Pneumonia", shape=oval];
+  "Bronchitis" [label="Bronchitis", shape=oval];
+  "COVID-19" [label="COVID-19", shape=oval];
+  "Allergic Reaction" [label="Allergic Reaction", shape=oval];
+  "Asthma Exacerbation" [label="Asthma Exacerbation", shape=oval];
+  "Musculoskeletal Pain" [label="Musculoskeletal Pain", shape=oval];
+
+  // Edges
+  "Patient presents with symptoms" -> "Fever?";
+  "Patient presents with symptoms" -> "Cough?";
+
+  "Fever?" -> "Severity of Fever" [label="Yes"];
+  "Fever?" -> "Cough?" [label="No"];
+
+  "Severity of Fever" -> "Influenza" [label="High"];
+  "Severity of Fever" -> "Common Cold" [label="Low"];
+
+  "Cough?" -> "Type of Cough" [label="Yes"];
+  "Cough?" -> "Shortness of Breath?" [label="No"];
+
+  "Type of Cough" -> "Pneumonia" [label="Productive"];
+  "Type of Cough" -> "Bronchitis" [label="Dry"];
+
+  "Shortness of Breath?" -> "Oxygen Saturation" [label="Yes"];
+  "Shortness of Breath?" -> "Chest Pain?" [label="No"];
+
+  "Oxygen Saturation" -> "COVID-19" [label="<90%"];
+  "Oxygen Saturation" -> "Pneumonia" [label=">=90%"];
+
+  "Chest Pain?" -> "Musculoskeletal Pain" [label="Yes"];
+  "Chest Pain?" -> "Allergic Reaction" [label="No"];
+}

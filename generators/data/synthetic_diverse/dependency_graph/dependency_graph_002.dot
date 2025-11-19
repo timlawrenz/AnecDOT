@@ -1,0 +1,35 @@
+digraph project_dependencies {
+  rankdir=LR;
+  node [shape=box];
+
+  "Design Documents" [label="Design Documents"];
+  "Database Schema" [label="Database Schema"];
+  "API Specification" [label="API Specification"];
+  "Frontend UI" [label="Frontend UI"];
+  "Backend API" [label="Backend API"];
+  "User Authentication" [label="User Authentication"];
+  "Data Models" [label="Data Models"];
+  "Deployment Scripts" [label="Deployment Scripts"];
+  "Testing Framework" [label="Testing Framework"];
+  "Integration Tests" [label="Integration Tests"];
+  "CI/CD Pipeline" [label="CI/CD Pipeline"];
+  "Documentation" [label="Documentation"];
+
+
+  "Design Documents" -> "Database Schema" [label="Defines structure"];
+  "Design Documents" -> "API Specification" [label="Outlines endpoints"];
+  "Database Schema" -> "Data Models" [label="Implements schema"];
+  "API Specification" -> "Backend API" [label="Defines contract"];
+  "Data Models" -> "Backend API" [label="Used by"];
+  "Backend API" -> "User Authentication" [label="Requires"];
+  "Frontend UI" -> "Backend API" [label="Consumes"];
+  "Backend API" -> "Deployment Scripts" [label="Deployed with"];
+  "Frontend UI" -> "Deployment Scripts" [label="Deployed with"];
+  "Testing Framework" -> "Integration Tests" [label="Provides tools"];
+  "Backend API" -> "Integration Tests" [label="Tested by"];
+  "Frontend UI" -> "Integration Tests" [label="Tested by"];
+  "Integration Tests" -> "CI/CD Pipeline" [label="Runs in"];
+  "CI/CD Pipeline" -> "Deployment Scripts" [label="Triggers"];
+  "Backend API" -> "Documentation" [label="Documented by"];
+  "Frontend UI" -> "Documentation" [label="Documented by"];
+}

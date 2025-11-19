@@ -1,0 +1,29 @@
+digraph SessionLifecycle {
+  rankdir=LR;
+  node [shape=circle];
+
+  // States
+  Login [label="Login"];
+  Active [label="Active"];
+  Idle [label="Idle"];
+  Locked [label="Locked"];
+  Logout [label="Logout", shape=doublecircle];
+  Expired [label="Expired", shape=doublecircle];
+
+  // Transitions
+  Login -> Active [label="Successful Login"];
+  Active -> Idle [label="User Inactivity (timeout)"];
+  Idle -> Active [label="User Activity"];
+  Active -> Locked [label="Multiple Failed Attempts"];
+  Locked -> Login [label="Password Reset/Unlock"];
+  Active -> Logout [label="Explicit Logout"];
+  Idle -> Logout [label="Explicit Logout"];
+  Active -> Expired [label="Session Timeout"];
+  Idle -> Expired [label="Session Timeout"];
+  Locked -> Expired [label="Session Timeout"];
+  Expired -> Login [label="Restart Session"];
+
+  //Start State
+  start [shape=plaintext, label="Start"];
+  start -> Login;
+}

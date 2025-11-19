@@ -1,0 +1,48 @@
+digraph dependency_graph {
+  rankdir=LR;
+
+  node [shape=box, style=filled, fillcolor="#e0e0e0"];
+
+  "CoreLibrary" [label="Core Library"];
+  "UIFramework" [label="UI Framework"];
+  "DataPersistence" [label="Data Persistence"];
+  "NetworkModule" [label="Network Module"];
+  "LoggingModule" [label="Logging Module"];
+  "SecurityModule" [label="Security Module"];
+  "AnalyticsSDK" [label="Analytics SDK"];
+  "ImageProcessing" [label="Image Processing"];
+  "DatabaseDriver" [label="Database Driver"];
+  "ConfigurationManager" [label="Configuration Manager"];
+  "APIServer" [label="API Server"];
+  "TestFramework" [label="Test Framework"];
+
+
+  "APIServer" -> "CoreLibrary";
+  "APIServer" -> "DataPersistence";
+  "APIServer" -> "NetworkModule";
+  "APIServer" -> "ConfigurationManager";
+  "APIServer" -> "SecurityModule";
+
+  "UIFramework" -> "CoreLibrary";
+  "UIFramework" -> "ImageProcessing";
+
+  "DataPersistence" -> "DatabaseDriver";
+  "DataPersistence" -> "LoggingModule";
+
+  "NetworkModule" -> "CoreLibrary";
+  "NetworkModule" -> "LoggingModule";
+
+  "SecurityModule" -> "CoreLibrary";
+  "SecurityModule" -> "LoggingModule";
+
+  "AnalyticsSDK" -> "CoreLibrary";
+  "AnalyticsSDK" -> "NetworkModule";
+
+  "ConfigurationManager" -> "CoreLibrary";
+  "ConfigurationManager" -> "LoggingModule";
+
+  "TestFramework" -> "CoreLibrary";
+  "TestFramework" -> "UIFramework";
+  "TestFramework" -> "DataPersistence";
+  "TestFramework" -> "NetworkModule";
+}

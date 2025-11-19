@@ -1,0 +1,13 @@
+# Training Data Sources
+# Format: <source_type> | <url_or_repo> | <pairs_extracted> | <date_added>
+
+# FSM/Automata Libraries
+code_extraction | https://github.com/fgmacedo/python-statemachine | 45 | 2025-01-19
+code_extraction | https://github.com/caleb531/automata | 12 | 2025-01-19
+
+# Synthetic Generation (Gemma 2 27B via Ollama)
+synthetic | minimal_validator | 10 | 2025-01-19
+synthetic | diverse_scenarios | 50 | 2025-01-19
+
+# Total pairs: ~117
+# Last updated: 2025-01-19

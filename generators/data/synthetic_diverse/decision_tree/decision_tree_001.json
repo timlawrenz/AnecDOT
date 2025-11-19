@@ -1,0 +1,15 @@
+{
+  "graph_type": "decision_tree",
+  "pattern": "Loan approval decision",
+  "description": "Decision making and classification trees",
+  "constraints": {
+    "min_depth": 2,
+    "max_depth": 4,
+    "binary_splits": true,
+    "leaf_labels": "decisions",
+    "hierarchical": true
+  },
+  "model": "gemma3:27b",
+  "temperature": 0.8,
+  "nl_description": "Loan approval decision"
+}

@@ -1,0 +1,25 @@
+digraph binary_divisible_by_3 {
+    rankdir=LR;
+    node [shape=circle];
+
+    // States represent the remainder when dividing by 3
+    // 0: divisible by 3 (accept state)
+    // 1: remainder 1
+    // 2: remainder 2
+
+    0 [label="q0 (Rem 0)", style=filled, fillcolor=lightgreen];
+    1 [label="q1 (Rem 1)"];
+    2 [label="q2 (Rem 2)"];
+
+    // Transitions
+    0 [to=0 label="0"];
+    0 [to=1 label="1"];
+    1 [to=2 label="0"];
+    1 [to=0 label="1"];
+    2 [to=1 label="0"];
+    2 [to=2 label="1"];
+
+    // Initial state
+    start [shape=doublecircle, label="Start"];
+    start -> 0;
+}

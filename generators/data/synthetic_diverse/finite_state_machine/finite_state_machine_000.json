@@ -1,0 +1,15 @@
+{
+  "graph_type": "finite_state_machine",
+  "pattern": "Session lifecycle (login, active, idle, logout)",
+  "description": "State machines with transitions and events",
+  "constraints": {
+    "min_states": 3,
+    "max_states": 8,
+    "has_start_state": true,
+    "has_end_states": true,
+    "labeled_transitions": true
+  },
+  "model": "gemma3:27b",
+  "temperature": 0.8,
+  "nl_description": "Session lifecycle (login, active, idle, logout)"
+}

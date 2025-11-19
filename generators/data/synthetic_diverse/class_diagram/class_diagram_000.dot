@@ -1,0 +1,23 @@
+digraph InheritanceHierarchy {
+  rankdir=TB;
+  node [shape=box, style="rounded,filled", fillcolor="#e6f2ff"];
+
+  // Nodes (Classes)
+  "Animal" [label="Animal"];
+  "Mammal" [label="Mammal"];
+  "Reptile" [label="Reptile"];
+  "Dog" [label="Dog"];
+  "Cat" [label="Cat"];
+  "Snake" [label="Snake"];
+  "Crocodile" [label="Crocodile"];
+
+  // Edges (Relationships)
+  "Animal" -> "Mammal" [label="Inherits", arrowhead=empty];
+  "Animal" -> "Reptile" [label="Inherits", arrowhead=empty];
+  "Mammal" -> "Dog" [label="Inherits", arrowhead=empty];
+  "Mammal" -> "Cat" [label="Inherits", arrowhead=empty];
+  "Reptile" -> "Snake" [label="Inherits", arrowhead=empty];
+  "Reptile" -> "Crocodile" [label="Inherits", arrowhead=empty];
+
+  // Attributes (can be added inside nodes if desired, but kept simple for readability)
+}

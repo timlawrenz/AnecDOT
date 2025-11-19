@@ -1,0 +1,24 @@
+digraph CompositionRelationships {
+  rankdir=TD;
+  node [shape=class];
+
+  // Nodes
+  Engine [label="Engine\n+ start()\n+ stop()"];
+  Car [label="Car\n+ accelerate()\n+ brake()\n+ drive()"];
+  Wheel [label="Wheel\n+ rotate()"];
+  Dashboard [label="Dashboard\n+ displayInfo()"];
+  NavigationSystem [label="NavigationSystem\n+ calculateRoute()"];
+  Battery [label="Battery\n+ charge()\n+ discharge()"];
+  Chassis [label="Chassis\n+ provideStructure()"];
+
+  // Relationships (Composition)
+  Car -> Engine [label="has-a", style=solid, arrowhead=vee];
+  Car -> Wheel [label="has-a", style=solid, arrowhead=vee];
+  Car -> Dashboard [label="has-a", style=solid, arrowhead=vee];
+  Car -> Chassis [label="has-a", style=solid, arrowhead=vee];
+  Dashboard -> NavigationSystem [label="has-a", style=solid, arrowhead=vee];
+  Engine -> Battery [label="has-a", style=solid, arrowhead=vee];
+
+  // Additional connections for clarity
+  Wheel -> Wheel [label="part of", style=dashed, arrowhead=vee]; // Illustrate self-relation
+}

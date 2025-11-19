@@ -1,0 +1,25 @@
+digraph BinarySearchTree {
+    rankdir=TB;
+    node [shape=circle];
+
+    50 [label="50"];
+    30 [label="30"];
+    70 [label="70"];
+    20 [label="20"];
+    40 [label="40"];
+    60 [label="60"];
+    80 [label="80"];
+    10 [label="10"];
+    35 [label="35"];
+    65 [label="65"];
+
+    50 -> 30 [label="left"];
+    50 -> 70 [label="right"];
+    30 -> 20 [label="left"];
+    30 -> 40 [label="right"];
+    70 -> 60 [label="left"];
+    70 -> 80 [label="right"];
+    20 -> 10 [label="left"];
+    40 -> 35 [label="right"];
+    60 -> 65 [label="right"];
+}

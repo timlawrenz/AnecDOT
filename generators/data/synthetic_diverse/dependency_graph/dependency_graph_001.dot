@@ -1,0 +1,34 @@
+digraph CoursePrerequisites {
+    rankdir=TDL; // Top-Down Layout
+
+    node [shape=box, style=filled, fillcolor=lightskyblue];
+
+    "Calculus I" [label="Calculus I"];
+    "Linear Algebra" [label="Linear Algebra"];
+    "Data Structures" [label="Data Structures"];
+    "Algorithms" [label="Algorithms"];
+    "Probability & Statistics" [label="Probability & Statistics"];
+    "Machine Learning" [label="Machine Learning"];
+    "Deep Learning" [label="Deep Learning"];
+    "Database Systems" [label="Database Systems"];
+    "Operating Systems" [label="Operating Systems"];
+    "Computer Architecture" [label="Computer Architecture"];
+    "Software Engineering" [label="Software Engineering"];
+    "Natural Language Processing" [label="Natural Language Processing"];
+
+
+    "Machine Learning" -> "Probability & Statistics" [label="Requires"];
+    "Machine Learning" -> "Linear Algebra" [label="Requires"];
+    "Machine Learning" -> "Algorithms" [label="Requires"];
+    "Deep Learning" -> "Machine Learning" [label="Requires"];
+    "Deep Learning" -> "Probability & Statistics" [label="Requires"];
+    "Natural Language Processing" -> "Machine Learning" [label="Requires"];
+    "Natural Language Processing" -> "Data Structures" [label="Requires"];
+    "Algorithms" -> "Data Structures" [label="Requires"];
+    "Data Structures" -> "Calculus I" [label="Requires"];
+    "Database Systems" -> "Algorithms" [label="Requires"];
+    "Operating Systems" -> "Computer Architecture" [label="Requires"];
+    "Computer Architecture" -> "Calculus I" [label="Requires"];
+    "Software Engineering" -> "Algorithms" [label="Requires"];
+    "Software Engineering" -> "Database Systems" [label="Requires"];
+}

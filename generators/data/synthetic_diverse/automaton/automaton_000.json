@@ -1,0 +1,15 @@
+{
+  "graph_type": "automaton",
+  "pattern": "Recognize strings ending in '01'",
+  "description": "DFA, NFA for formal language recognition",
+  "constraints": {
+    "min_states": 2,
+    "max_states": 6,
+    "alphabet_size": 2,
+    "has_accept_states": true,
+    "formal_notation": true
+  },
+  "model": "gemma3:27b",
+  "temperature": 0.8,
+  "nl_description": "Recognize strings ending in '01'"
+}

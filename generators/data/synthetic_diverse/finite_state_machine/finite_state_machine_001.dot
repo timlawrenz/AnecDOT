@@ -1,0 +1,36 @@
+digraph network_protocol_states {
+  rankdir=LR;
+  node [shape=circle];
+
+  // States
+  "Connecting" [label="Connecting", style="rounded"];
+  "Authenticating" [label="Authenticating"];
+  "Connected" [label="Connected", style="rounded,filled", fillcolor="lightgreen"];
+  "DataTransfer" [label="Data Transfer"];
+  "Disconnecting" [label="Disconnecting", style="rounded"];
+  "Closing" [label="Closing"];
+  "Error" [label="Error", style="rounded,filled", fillcolor="red"];
+
+  // Transitions
+  "Connecting" -> "Authenticating" [label="Authentication Request"];
+  "Authenticating" -> "Connected" [label="Authentication Success"];
+  "Authenticating" -> "Error" [label="Authentication Failure"];
+  "Connected" -> "DataTransfer" [label="Data Exchange Started"];
+  "DataTransfer" -> "Disconnecting" [label="User Initiated Disconnect"];
+  "DataTransfer" -> "Disconnecting" [label="Server Initiated Disconnect"];
+  "Disconnecting" -> "Closing" [label="Acknowledgement Received"];
+  "Disconnecting" -> "Error" [label="Timeout / No Ack"];
+  "Closing" -> "Connecting" [label="Reconnect Attempt"];
+  "Closing" -> "Idle" [label="Connection Closed"];
+  "Error" -> "Connecting" [label="Retry"];
+  "Error" -> "Idle" [label="Fatal Error"];
+
+  "Idle" [label="Idle", style="rounded"];
+
+  //Start and End States
+  "Idle" -> "Connecting" [label="Connection Request", style="bold"];
+
+  {rank=same; "Idle"; "Connecting";}
+  {rank=same; "Closing"; "Connecting";}
+
+}

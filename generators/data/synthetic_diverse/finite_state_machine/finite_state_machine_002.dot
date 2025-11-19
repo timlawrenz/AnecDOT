@@ -1,0 +1,31 @@
+digraph game_state_machine {
+  rankdir=LR;
+  node [shape=box];
+
+  start [label="Start", style=rounded];
+  menu [label="Menu"];
+  playing [label="Playing"];
+  paused [label="Paused"];
+  game_over [label="Game Over"];
+  win [label="Win"];
+
+  start -> menu [label="Start Game"];
+
+  menu -> playing [label="New Game"];
+  menu -> game_over [label="Load Game (Failed)"];
+  menu -> start [label="Return to Start"];
+
+  playing -> paused [label="Pause"];
+  playing -> game_over [label="Game Over (Lost)"];
+  playing -> win [label="Game Over (Win)"];
+
+  paused -> playing [label="Resume"];
+  paused -> menu [label="Return to Menu"];
+
+  game_over -> menu [label="Return to Menu"];
+  win -> menu [label="Return to Menu"];
+
+  {rank=same; start; menu;}
+  {rank=same; playing; paused;}
+  {rank=same; game_over; win;}
+}

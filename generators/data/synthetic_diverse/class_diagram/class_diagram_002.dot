@@ -1,0 +1,24 @@
+digraph InterfaceImplementation {
+  rankdir=TD;
+  node [shape=rectangle];
+
+  // Classes
+  PaymentGateway [label="PaymentGateway\n(Abstract)"];
+  CreditCardPayment [label="CreditCardPayment"];
+  PayPalPayment [label="PayPalPayment"];
+  Order [label="Order"];
+  ShippingService [label="ShippingService\n(Interface)"];
+  FedExShipping [label="FedExShipping"];
+
+  // Relationships
+  Order -- CreditCardPayment [label="uses", arrowhead=vee];
+  Order -- PayPalPayment [label="uses", arrowhead=vee];
+  CreditCardPayment -- PaymentGateway [label="implements", arrowhead=empty, style=dashed];
+  PayPalPayment -- PaymentGateway [label="implements", arrowhead=empty, style=dashed];
+  Order -- FedExShipping [label="uses", arrowhead=vee];
+  FedExShipping -- ShippingService [label="implements", arrowhead=empty, style=dashed];
+  
+  // Self-reference for clarity (optional)
+  // PaymentGateway -- PaymentGateway [label="is abstract"];
+
+}

@@ -1,0 +1,14 @@
+{
+  "graph_type": "architecture",
+  "pattern": "Client-server topology",
+  "description": "System architecture and component relationships",
+  "constraints": {
+    "min_components": 4,
+    "max_components": 12,
+    "show_connections": true,
+    "undirected": false
+  },
+  "model": "gemma3:27b",
+  "temperature": 0.8,
+  "nl_description": "Client-server topology"
+}

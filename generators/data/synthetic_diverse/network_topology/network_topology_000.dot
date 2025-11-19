@@ -1,0 +1,16 @@
+graph StarNetwork {
+  node [shape=box, style=filled, fillcolor=lightskyblue];
+  "Central Switch" [label="Central Switch\n(192.168.1.1)", shape=doublecircle, fillcolor=coral];
+
+  "Node A" [label="Node A\n(192.168.1.2)"];
+  "Node B" [label="Node B\n(192.168.1.3)"];
+  "Node C" [label="Node C\n(192.168.1.4)"];
+  "Node D" [label="Node D\n(192.168.1.5)"];
+  "Node E" [label="Node E\n(192.168.1.6)"];
+
+  "Central Switch" -- "Node A" [label="1 Gbps Ethernet"];
+  "Central Switch" -- "Node B" [label="1 Gbps Ethernet"];
+  "Central Switch" -- "Node C" [label="1 Gbps Ethernet"];
+  "Central Switch" -- "Node D" [label="1 Gbps Ethernet"];
+  "Central Switch" -- "Node E" [label="1 Gbps Ethernet"];
+}

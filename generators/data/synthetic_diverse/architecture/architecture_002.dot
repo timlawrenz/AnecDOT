@@ -1,0 +1,33 @@
+digraph ClientServerTopology {
+  rankdir=LR;
+  node [shape=box];
+
+  // Components
+  Client1 [label="Client 1\n(Web Browser)"];
+  Client2 [label="Client 2\n(Mobile App)"];
+  LoadBalancer [label="Load Balancer"];
+  WebServer1 [label="Web Server 1\n(Node.js)"];
+  WebServer2 [label="Web Server 2\n(Node.js)"];
+  APIserver [label="API Server\n(Python/Flask)"];
+  Database [label="Database\n(PostgreSQL)"];
+  Cache [label="Cache\n(Redis)"];
+  AuthenticationServer [label="Authentication Server"];
+  FileStorage [label="File Storage\n(AWS S3)"];
+
+  // Connections
+  Client1 -> LoadBalancer [label="HTTPS Request"];
+  Client2 -> LoadBalancer [label="HTTPS Request"];
+  LoadBalancer -> WebServer1 [label="HTTP Request"];
+  LoadBalancer -> WebServer2 [label="HTTP Request"];
+  WebServer1 -> APIserver [label="HTTP Request"];
+  WebServer2 -> APIserver [label="HTTP Request"];
+  APIserver -> Database [label="SQL Query"];
+  APIserver -> Cache [label="Cache Read/Write"];
+  APIserver -> AuthenticationServer [label="Authentication Request"];
+  APIserver -> FileStorage [label="File Access"];
+  AuthenticationServer -> Database [label="User Data"];
+
+  // Styling (optional - can be added for visual improvement)
+  node [fontname="Arial"];
+  edge [fontname="Arial"];
+}

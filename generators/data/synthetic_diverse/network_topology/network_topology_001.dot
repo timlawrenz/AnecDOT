@@ -1,0 +1,17 @@
+graph RingTopology {
+  node [shape=box, style=filled, fillcolor=lightskyblue];
+
+  "RouterA" [label="RouterA\n192.168.1.1"];
+  "RouterB" [label="RouterB\n192.168.1.2"];
+  "RouterC" [label="RouterC\n192.168.1.3"];
+  "RouterD" [label="RouterD\n192.168.1.4"];
+  "RouterE" [label="RouterE\n192.168.1.5"];
+  "RouterF" [label="RouterF\n192.168.1.6"];
+
+  "RouterA" -- "RouterB" [label="Link 1"];
+  "RouterB" -- "RouterC" [label="Link 2"];
+  "RouterC" -- "RouterD" [label="Link 3"];
+  "RouterD" -- "RouterE" [label="Link 4"];
+  "RouterE" -- "RouterF" [label="Link 5"];
+  "RouterF" -- "RouterA" [label="Link 6"];
+}

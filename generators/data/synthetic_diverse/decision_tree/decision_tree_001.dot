@@ -1,0 +1,40 @@
+digraph LoanApproval {
+  rankdir=TB;
+  node [shape=box];
+
+  // Root Node
+  "Credit Score >= 700" [label="Credit Score >= 700?\n(Depth 0)"];
+
+  // Branch 1: Yes (Good Credit)
+  "Credit Score >= 700" -> "Debt-to-Income Ratio <= 30%" [label="Yes"];
+  "Debt-to-Income Ratio <= 30%" [label="Debt-to-Income Ratio <= 30%\n(Depth 1)"];
+
+  "Debt-to-Income Ratio <= 30%" -> "Loan Amount <= $50,000" [label="Yes"];
+  "Debt-to-Income Ratio <= 30%" -> "Approved (Low Risk)" [label="No"];
+
+  "Loan Amount <= $50,000" [label="Loan Amount <= $50,000\n(Depth 2)"];
+  "Loan Amount <= $50,000" -> "Approved (Standard Risk)" [label="Yes"];
+  "Loan Amount <= $50,000" -> "Review (Medium Risk)" [label="No"];
+
+  // Branch 2: No (Poor Credit)
+  "Credit Score >= 700" -> "Credit Score < 700" [label="No"];
+  "Credit Score < 700" [label="Credit Score < 700\n(Depth 1)"];
+
+  "Credit Score < 700" -> "Loan Purpose = Home Improvement" [label="Yes"];
+  "Credit Score < 700" -> "Denied (High Risk)" [label="No"];
+
+  "Loan Purpose = Home Improvement" [label="Loan Purpose = Home Improvement?\n(Depth 2)"];
+  "Loan Purpose = Home Improvement" -> "Income >= $60,000" [label="Yes"];
+  "Loan Purpose = Home Improvement" -> "Review (Medium Risk)" [label="No"];
+
+  "Income >= $60,000" [label="Income >= $60,000?\n(Depth 3)"];
+  "Income >= $60,000" -> "Approved (Conditional)" [label="Yes"];
+  "Income >= $60,000" -> "Review (Medium Risk)" [label="No"];
+
+  // Leaf Nodes - Decisions
+  "Approved (Standard Risk)" [label="Approved (Standard Risk)", shape=oval];
+  "Approved (Conditional)" [label="Approved (Conditional)", shape=oval];
+  "Approved (Low Risk)" [label="Approved (Low Risk)", shape=oval];
+  "Denied (High Risk)" [label="Denied (High Risk)", shape=oval];
+  "Review (Medium Risk)" [label="Review (Medium Risk)", shape=oval];
+}

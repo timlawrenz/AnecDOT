@@ -1,0 +1,14 @@
+{
+  "graph_type": "class_diagram",
+  "pattern": "Interface implementation",
+  "description": "Object-oriented relationships",
+  "constraints": {
+    "min_classes": 3,
+    "max_classes": 8,
+    "show_relationship_types": true,
+    "labeled_edges": true
+  },
+  "model": "gemma3:27b",
+  "temperature": 0.8,
+  "nl_description": "Interface implementation"
+}

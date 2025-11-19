@@ -1,0 +1,28 @@
+graph MeshNetwork {
+  rankdir=LR;
+  node [shape=circle];
+
+  // Node Definitions with Types
+  "RouterA" [label="Router A\n(Core)", style="filled", fillcolor="lightblue"];
+  "RouterB" [label="Router B\n(Core)", style="filled", fillcolor="lightblue"];
+  "RouterC" [label="Router C\n(Edge)", style="filled", fillcolor="lightgreen"];
+  "RouterD" [label="Router D\n(Edge)", style="filled", fillcolor="lightgreen"];
+  "Sensor1" [label="Sensor 1\n(IoT)", style="filled", fillcolor="orange"];
+  "Sensor2" [label="Sensor 2\n(IoT)", style="filled", fillcolor="orange"];
+  "Laptop1" [label="Laptop 1\n(Client)", style="filled", fillcolor="yellow"];
+  "Server1" [label="Server 1\n(Data)", style="filled", fillcolor="pink"];
+  "Printer1" [label="Printer 1\n(Peripheral)", style="filled", fillcolor="lightgray"];
+
+  // Edge Definitions (Undirected)
+  "RouterA" -- "RouterB" [label="High-Speed Link"];
+  "RouterA" -- "RouterC" [label="Wireless"];
+  "RouterA" -- "RouterD" [label="Wireless"];
+  "RouterB" -- "RouterC" [label="Wireless"];
+  "RouterB" -- "RouterD" [label="Wireless"];
+  "RouterC" -- "Sensor1" [label="Zigbee"];
+  "RouterC" -- "Sensor2" [label="Zigbee"];
+  "RouterD" -- "Laptop1" [label="Wi-Fi"];
+  "RouterD" -- "Printer1" [label="Wi-Fi"];
+  "RouterA" -- "Server1" [label="Fiber"];
+  "RouterB" -- "Server1" [label="Fiber"];
+}

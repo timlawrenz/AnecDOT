@@ -1,0 +1,24 @@
+digraph dfa_even_a {
+  rankdir=LR;
+  node [shape=circle];
+
+  // States
+  s0 [label="q0 (Even 'a's)"];
+  s1 [label="q1 (Odd 'a's)"];
+
+  // Initial state
+  start [shape=doublecircle];
+  start -> s0;
+
+  // Transitions
+  s0 -> s0 [label="b"];
+  s0 -> s1 [label="a"];
+  s1 -> s0 [label="a"];
+  s1 -> s1 [label="b"];
+
+  // Accept state
+  s0 [style=filled, fillcolor=lightgreen];
+
+  // Alphabet
+  label = "DFA for Even Number of 'a's\nAlphabet: {a, b}";
+}

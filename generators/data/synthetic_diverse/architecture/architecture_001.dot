@@ -1,0 +1,52 @@
+digraph LayeredApplication {
+  rankdir=LR;
+  node [shape=box];
+
+  // Presentation Layer
+  subgraph cluster_presentation {
+    label = "Presentation Layer";
+    style = "rounded,filled";
+    fillcolor = "#e6ffe6";
+
+    "WebUI" [label="Web UI"];
+    "MobileApp" [label="Mobile App"];
+    "API Gateway" [label="API Gateway"];
+  }
+
+  // Business Layer
+  subgraph cluster_business {
+    label = "Business Layer";
+    style = "rounded,filled";
+    fillcolor = "#ffffcc";
+
+    "UserManagement" [label="User Management"];
+    "OrderProcessing" [label="Order Processing"];
+    "ProductCatalog" [label="Product Catalog"];
+  }
+
+  // Data Layer
+  subgraph cluster_data {
+    label = "Data Layer";
+    style = "rounded,filled";
+    fillcolor = "#ffe6e6";
+
+    "UserDB" [label="User Database"];
+    "OrderDB" [label="Order Database"];
+    "ProductDB" [label="Product Database"];
+    "Cache" [label="Cache (Redis)"];
+  }
+
+  // Connections
+  "WebUI" -> "API Gateway" [label="HTTP Requests"];
+  "MobileApp" -> "API Gateway" [label="HTTP Requests"];
+
+  "API Gateway" -> "UserManagement" [label="User Auth/Info"];
+  "API Gateway" -> "OrderProcessing" [label="Order Requests"];
+  "API Gateway" -> "ProductCatalog" [label="Product Requests"];
+
+  "UserManagement" -> "UserDB" [label="User Data"];
+  "OrderProcessing" -> "OrderDB" [label="Order Data"];
+  "ProductCatalog" -> "ProductDB" [label="Product Data"];
+  "ProductCatalog" -> "Cache" [label="Cache Lookup/Update"];
+  "OrderProcessing" -> "Cache" [label="Cache Lookup/Update"];
+}

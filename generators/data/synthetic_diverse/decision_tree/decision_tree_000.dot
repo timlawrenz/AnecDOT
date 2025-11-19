@@ -1,0 +1,58 @@
+digraph AnimalClassification {
+    rankdir=TB;
+    node [shape=box];
+
+    // Root Node
+    "Is it a Vertebrate?" [label="Is it a Vertebrate?"];
+
+    // Vertebrate Branch
+    "Is it a Vertebrate?" -> "Yes" [label="Yes"];
+    "Is it a Vertebrate?" -> "No" [label="No"];
+
+    // No - Invertebrates
+    "No" -> "Invertebrate" [label="Invertebrate"];
+    "Invertebrate" [label="Invertebrate\n(e.g., Insects, Mollusks)"];
+
+    // Yes - Vertebrates
+    "Yes" -> "Does it have Hair/Fur?" [label="Yes"];
+
+    // Hair/Fur Split
+    "Does it have Hair/Fur?" -> "Yes" [label="Yes"];
+    "Does it have Hair/Fur?" -> "No" [label="No"];
+
+    // Hair/Fur Yes - Mammal
+    "Yes" -> "Mammal" [label="Mammal\n(e.g., Dogs, Humans)"];
+
+    // Hair/Fur No - Other Vertebrates
+    "No" -> "Does it have Feathers?" [label="No"];
+
+    // Feathers Split
+    "Does it have Feathers?" -> "Yes" [label="Yes"];
+    "Does it have Feathers?" -> "No" [label="No"];
+
+    // Feathers Yes - Bird
+    "Yes" -> "Bird" [label="Bird\n(e.g., Eagle, Sparrow)"];
+
+    // Feathers No - Reptile/Fish/Amphibian
+    "No" -> "Is it Aquatic?" [label="No"];
+
+    //Aquatic split
+    "Is it Aquatic?" -> "Yes" [label="Yes"];
+    "Is it Aquatic?" -> "No" [label="No"];
+
+    //Aquatic Yes - Fish
+    "Yes" -> "Fish" [label="Fish\n(e.g., Salmon, Shark)"];
+
+    //Aquatic No - Reptile/Amphibian
+    "No" -> "Does it have Smooth, Moist Skin?" [label="No"];
+
+    //Smooth/Moist Skin
+    "Does it have Smooth, Moist Skin?" -> "Yes" [label="Yes"];
+    "Does it have Smooth, Moist Skin?" -> "No" [label="No"];
+
+    //Smooth/Moist Skin Yes - Amphibian
+    "Yes" -> "Amphibian" [label="Amphibian\n(e.g., Frog, Salamander)"];
+
+    //Smooth/Moist Skin No - Reptile
+    "No" -> "Reptile" [label="Reptile\n(e.g., Snake, Lizard)"];
+}

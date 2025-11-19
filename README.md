@@ -46,14 +46,16 @@ Three data streams feed the training pipeline:
 - **Source**: Teacher LLMs (Gemini, Ollama) + seed prompts
 - **Method**: Few-shot prompting with grounded examples + compiler verification
 - **Purpose**: Dataset augmentation with diverse scenarios
-- **Status**: ✅ Validated (10 examples, 100% success rate)
+- **Status**: ✅ Validated (60 examples, 100% success rate)
+- **Coverage**: State machines, workflows, architecture diagrams, decision trees, network topology
 
-**Current Dataset Status (as of 2025-11-19):**
+**Current Dataset Status (as of 2025-01-19):**
 - Documentation Stream: 44 pairs (13 gallery + 31 attributes)
-- Logic Stream: 14 pairs (7 CODE_TO_DOT + 7 NL_TO_DOT)
-- Synthetic Stream: 10 pairs (validation batch)
-- **Total: 68 training pairs** (100% validated)
-- **Target: 250-350 pairs** before training
+- Logic Stream: ~57 pairs (python-statemachine: 45, automata: 12)
+- Synthetic Stream: 60 pairs (10 validation + 50 diverse)
+- **Total: ~161 training pairs** (100% syntactically validated)
+- **Target: 250-350 pairs** before Phase II training
+- **Sources tracked**: data/sources.txt
 
 ### Data Schema
 

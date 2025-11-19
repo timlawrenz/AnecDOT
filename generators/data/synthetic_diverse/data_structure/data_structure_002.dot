@@ -1,0 +1,55 @@
+digraph hashtable {
+  rankdir=LR;
+  node [shape=box];
+
+  subgraph cluster_0 {
+    label = "Hash Table";
+    style = filled;
+    color = lightblue;
+
+    node [shape=box];
+    "index_0" [label="0"];
+    "index_1" [label="1"];
+    "index_2" [label="2"];
+    "index_3" [label="3"];
+
+    "index_0" -> "chain_0";
+    "index_1" -> "chain_1";
+    "index_2" -> "chain_2";
+    "index_3" -> "chain_3";
+  }
+
+  subgraph cluster_chain_0 {
+    label = "Chain 0";
+    style = dashed;
+    color = gray;
+    "node_0_0" [label="Key: A, Value: 10"];
+    "node_0_1" [label="Key: H, Value: 25"];
+    "node_0_0" -> "node_0_1" [label="next"];
+  }
+
+  subgraph cluster_chain_1 {
+    label = "Chain 1";
+    style = dashed;
+    color = gray;
+    "node_1_0" [label="Key: B, Value: 15"];
+    "node_1_1" [label="Key: K, Value: 30"];
+    "node_1_0" -> "node_1_1" [label="next"];
+  }
+
+  subgraph cluster_chain_2 {
+    label = "Chain 2";
+    style = dashed;
+    color = gray;
+    "node_2_0" [label="Key: C, Value: 20"];
+  }
+
+  subgraph cluster_chain_3 {
+    label = "Chain 3";
+    style = dashed;
+    color = gray;
+    "node_3_0" [label="Key: D, Value: 22"];
+    "node_3_1" [label="Key: E, Value: 28"];
+    "node_3_0" -> "node_3_1" [label="next"];
+  }
+}

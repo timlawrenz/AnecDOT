@@ -1,0 +1,18 @@
+digraph DocumentApprovalWorkflow {
+    rankdir=LR;
+    node [shape=box];
+
+    "Document Created" -> "Draft Review" [label="Submit for Review"];
+    "Draft Review" -> "Content Approved" [label="Approved"];
+    "Draft Review" -> "Revision Required" [label="Changes Needed"];
+    "Revision Required" -> "Draft Review" [label="Resubmit"];
+    "Content Approved" -> "Legal Review" [label="Submit to Legal"];
+    "Legal Review" -> "Legal Approved" [label="Approved"];
+    "Legal Review" -> "Legal Revisions Required" [label="Changes Needed"];
+    "Legal Revisions Required" -> "Legal Review" [label="Resubmit"];
+    "Legal Approved" -> "Final Approval" [label="Submit for Final Approval"];
+    "Final Approval" -> "Approved" [label="Approved"];
+    "Final Approval" -> "Rejected" [label="Rejected"];
+    "Rejected" -> "Revision Required" [label="Revise & Resubmit"]; //loop back to early stage if rejected
+    "Approved" -> "Published";
+}

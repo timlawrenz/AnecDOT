@@ -1,0 +1,40 @@
+digraph MicroservicesArchitecture {
+  rankdir=LR;
+  node [shape=box, style=rounded];
+
+  // Components
+  UserInterface [label="User Interface (React/Angular)"];
+  APIGateway [label="API Gateway (Kong/NGINX)"];
+  AuthenticationService [label="Authentication Service"];
+  ProductCatalogService [label="Product Catalog Service"];
+  OrderManagementService [label="Order Management Service"];
+  PaymentService [label="Payment Service"];
+  ShippingService [label="Shipping Service"];
+  NotificationService [label="Notification Service"];
+  RecommendationService [label="Recommendation Service"];
+  Database [label="Database (PostgreSQL/MongoDB)"];
+
+  // Connections
+  UserInterface -> APIGateway [label="Requests"];
+  APIGateway -> AuthenticationService [label="AuthN/AuthZ"];
+  APIGateway -> ProductCatalogService [label="Product Data"];
+  APIGateway -> OrderManagementService [label="Order Requests"];
+  APIGateway -> RecommendationService [label="Recommendation Requests"];
+
+  OrderManagementService -> PaymentService [label="Payment Processing"];
+  OrderManagementService -> ShippingService [label="Shipping Details"];
+  OrderManagementService -> ProductCatalogService [label="Product Availability"];
+  OrderManagementService -> NotificationService [label="Order Updates"];
+
+  PaymentService -> Database [label="Payment Records"];
+  ShippingService -> Database [label="Shipping Status"];
+  ProductCatalogService -> Database [label="Product Data"];
+  AuthenticationService -> Database [label="User Credentials"];
+  NotificationService -> Database [label="Notification History"];
+
+  RecommendationService -> ProductCatalogService [label="Product Data (for recommendations)"];
+
+  // Styling (optional)
+  edge [fontname="Arial", fontsize="10"];
+  node [fontname="Arial", fontsize="10"];
+}

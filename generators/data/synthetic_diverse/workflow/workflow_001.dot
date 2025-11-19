@@ -1,0 +1,24 @@
+digraph UserRegistration {
+  rankdir=TD;
+  node [shape=box];
+
+  Start [label="Start: New User"];
+  EnterDetails [label="Enter Registration Details\n(Email, Username, Password)"];
+  ValidateDetails [label="Validate Details\n(Format, Uniqueness)"];
+  EmailVerification [label="Send Verification Email"];
+  VerifyEmail [label="User Verifies Email"];
+  AccountCreated [label="Account Created Successfully"];
+  Login [label="Login to Application"];
+  TermsAndConditions [label="Accept Terms & Conditions"];
+  PasswordStrength [label="Check Password Strength"];
+
+  Start -> EnterDetails;
+  EnterDetails -> PasswordStrength;
+  PasswordStrength -> ValidateDetails;
+  ValidateDetails -> TermsAndConditions;
+  TermsAndConditions -> EmailVerification;
+  EmailVerification -> VerifyEmail;
+  VerifyEmail -> AccountCreated;
+  AccountCreated -> Login;
+  Login -> End [label="End: Registration Complete"];
+}

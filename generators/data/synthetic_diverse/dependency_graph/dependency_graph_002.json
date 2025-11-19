@@ -1,0 +1,14 @@
+{
+  "graph_type": "dependency_graph",
+  "pattern": "Task dependencies in project",
+  "description": "Package dependencies, build order, prerequisites",
+  "constraints": {
+    "min_nodes": 5,
+    "max_nodes": 15,
+    "acyclic": true,
+    "directed": true
+  },
+  "model": "gemma3:27b",
+  "temperature": 0.8,
+  "nl_description": "Task dependencies in project"
+}

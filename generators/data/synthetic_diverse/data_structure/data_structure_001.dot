@@ -1,0 +1,25 @@
+digraph Linked_List_Traversal {
+    rankdir=LR;
+    node [shape=box];
+
+    node_0 [label="Head (10)"];
+    node_1 [label="Node (20)"];
+    node_2 [label="Node (30)"];
+    node_3 [label="Node (40)"];
+    node_4 [label="Node (50)"];
+    node_5 [label="Tail (60)"];
+
+    node_0 -> node_1 [label="next"];
+    node_1 -> node_2 [label="next"];
+    node_2 -> node_3 [label="next"];
+    node_3 -> node_4 [label="next"];
+    node_4 -> node_5 [label="next"];
+
+    //Traversal path highlighting
+    node_0 [color="green"];
+    node_1 [color="green"];
+    node_2 [color="green"];
+    node_3 [color="green"];
+    node_4 [color="green"];
+    node_5 [color="green"];
+}

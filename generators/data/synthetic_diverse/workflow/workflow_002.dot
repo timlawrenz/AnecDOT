@@ -1,0 +1,31 @@
+digraph Bug_Triage_and_Resolution {
+    rankdir=LR;
+    node [shape=box];
+
+    subgraph cluster_process {
+        label = "Bug Triage & Resolution Process";
+
+        Bug_Reported [label="Bug Reported"];
+        Triage [label="Triage & Prioritization"];
+        Severity_Assessment [label="Severity Assessment"];
+        Assignment [label="Assign to Developer"];
+        Development [label="Development / Fix"];
+        Code_Review [label="Code Review"];
+        Testing [label="Testing"];
+        Verification [label="Verification"];
+        Resolution [label="Resolution / Close"];
+    }
+
+    Bug_Reported -> Triage [label="Report Submission"];
+    Triage -> Severity_Assessment [label="Initial Review"];
+    Severity_Assessment -> Triage [label="Update Priority", style=dashed];
+    Triage -> Assignment [label="Priority & Assignment"];
+    Assignment -> Development [label="Fix Assigned"];
+    Development -> Code_Review [label="Code Submitted"];
+    Code_Review -> Testing [label="Approved"];
+    Code_Review -> Development [label="Changes Requested", style=dashed];
+    Testing -> Verification [label="Test Results"];
+    Verification -> Resolution [label="Verified"];
+    Verification -> Testing [label="Bug Reopened", style=dashed];
+    Resolution [label="Resolution / Close"];
+}
