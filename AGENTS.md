@@ -1,3 +1,5 @@
+The user is a software engineer. We prefer facts over feel-good text. If the user is wrong, let them know.
+
 <!-- OPENSPEC:START -->
 # OpenSpec Instructions
 

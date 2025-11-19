@@ -38,30 +38,44 @@ Phase I.3 introduces synthetic data generation using teacher LLMs to rapidly exp
 ## Decisions
 
 ### Decision 1: Teacher LLM Selection
-**Choice**: Support both OpenAI GPT-4 and Google Gemini 1.5 Pro
+**Choice**: Tiered approach with cloud and local models
+
+**Primary (Cloud API - Validation Phase)**:
+- **Gemini 2.5 Flash**: Fastest, cheapest for validation ($0.00001875/1K input)
+- **Gemini 2.5 Pro**: Higher quality if Flash insufficient
+- **Gemini 3 Pro Preview**: Latest model for comparison
+
+**Secondary (Local via Ollama - Cost-Free Alternative)**:
+- **Gemma 3:27b**: Google's open model, good for structured output
+- **DeepSeek-R1:32b**: Reasoning-focused, may handle DOT logic well
 
 **Rationale**:
-- GPT-4: Proven quality, excellent DOT generation, widely available
-- Gemini 1.5 Pro: Competitive quality, better pricing, large context window
-- Multi-provider: Redundancy, cost optimization, diversity of generation styles
+- Gemini Flash: ~400x cheaper than GPT-4, perfect for validation
+- Local models: Zero API cost, unlimited generations
+- Multi-tier: Start cheap (Flash), escalate if needed (Pro)
 
-**Pricing Comparison (as of Nov 2024):**
-- GPT-4: ~$0.03 per 1K input tokens, ~$0.06 per 1K output tokens
-- Gemini 1.5 Pro: ~$0.00125 per 1K input tokens, ~$0.005 per 1K output tokens
-- Estimated cost per DOT: GPT-4 $0.02-0.04, Gemini $0.005-0.01
+**Pricing Comparison (Nov 2024):**
+- Gemini 2.5 Flash: $0.00001875 per 1K input, $0.000075 per 1K output
+- Gemini 2.5 Pro: $0.00125 per 1K input, $0.005 per 1K output
+- GPT-4: ~$0.03 per 1K input, ~$0.06 per 1K output
+- Ollama (local): $0 (compute only)
+- Estimated cost per DOT: Flash $0.0001, Pro $0.005, GPT-4 $0.02
 
 **Implementation**:
 ```python
 providers = {
-    'openai': OpenAIGenerator(model='gpt-4-turbo-preview'),
-    'gemini': GeminiGenerator(model='gemini-1.5-pro')
+    'gemini-flash': GeminiGenerator(model='gemini-2.5-flash'),
+    'gemini-pro': GeminiGenerator(model='gemini-2.5-pro'),
+    'gemini-3': GeminiGenerator(model='gemini-3-pro-preview'),
+    'ollama-gemma': OllamaGenerator(model='gemma3:27b'),
+    'ollama-deepseek': OllamaGenerator(model='deepseek-r1:32b')
 }
 ```
 
 **Alternatives Considered**:
-- Claude 3.5 Sonnet: Good quality but no Python SDK at time of writing
-- Open-source models (Llama, Mistral): Quality concerns for structured output
-- GPT-3.5: Too inconsistent for DOT generation
+- OpenAI GPT-4: Too expensive for validation phase
+- Claude 3.5 Sonnet: Good quality but expensive
+- GPT-3.5: Inconsistent for structured output
 
 ### Decision 2: Quality Validation Strategy
 **Choice**: Multi-stage validation (syntactic + semantic + deduplication)
