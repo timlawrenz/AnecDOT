@@ -37,13 +37,15 @@ def is_valid_dot_syntax(dot_string: str) -> bool:
 
 def extract_dot_from_response(response: str) -> Optional[str]:
     """Extract DOT graph from model response."""
+    # Remove prompt prefix if present
+    if "<start_of_turn>model" in response:
+        response = response.split("<start_of_turn>model")[-1]
+    
     # Try to find DOT graph between common delimiters
     patterns = [
         r'```dot\n(.*?)```',
         r'```\n(digraph.*?)```',
         r'```\n(graph.*?)```',
-        r'(digraph\s+\w*\s*{.*?})',
-        r'(graph\s+\w*\s*{.*?})',
     ]
     
     for pattern in patterns:
@@ -51,9 +53,34 @@ def extract_dot_from_response(response: str) -> Optional[str]:
         if match:
             return match.group(1).strip()
     
-    # If no delimiters, try to find raw digraph/graph
-    if response.strip().startswith(('digraph', 'graph')):
-        return response.strip()
+    # Find digraph/graph with balanced braces
+    # Look for 'digraph' or 'graph' followed by balanced {}
+    for start_pattern in [r'\bdigraph\b', r'\bgraph\b']:
+        match = re.search(start_pattern, response, re.IGNORECASE)
+        if match:
+            start_pos = match.start()
+            # Find balanced braces starting from this position
+            dot_candidate = extract_balanced_braces(response[start_pos:])
+            if dot_candidate:
+                return dot_candidate
+    
+    return None
+
+
+def extract_balanced_braces(text: str) -> Optional[str]:
+    """Extract text with balanced braces starting with digraph/graph."""
+    brace_count = 0
+    start_idx = text.find('{')
+    if start_idx == -1:
+        return None
+    
+    for i in range(start_idx, len(text)):
+        if text[i] == '{':
+            brace_count += 1
+        elif text[i] == '}':
+            brace_count -= 1
+            if brace_count == 0:
+                return text[:i+1].strip()
     
     return None
 
