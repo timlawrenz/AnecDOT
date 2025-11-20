@@ -83,18 +83,43 @@ class AnecDOTDataset:
         
         return pairs
     
-    def format_instruction(self, pair: Dict) -> str:
-        """Format pair as instruction-tuning prompt."""
-        system_prompt = "You are a DOT graph generator. Convert the given input into a valid DOT graph representation."
-        user_input = pair["input_text"]
-        assistant_output = pair["output_dot"]
+    def format_instruction(self, pair: Dict, tokenizer=None) -> str:
+        """Format pair as instruction-tuning prompt.
         
-        # Using simple format compatible with most instruction models
-        formatted = f"<|system|>\n{system_prompt}\n<|user|>\n{user_input}\n<|assistant|>\n{assistant_output}"
+        If tokenizer provided, uses its chat template.
+        Otherwise uses Gemma-2B-IT format as default.
+        """
+        if tokenizer and hasattr(tokenizer, 'apply_chat_template'):
+            # Use model's native chat template
+            messages = [
+                {"role": "user", "content": pair["input_text"]}
+            ]
+            # Format without assistant response (we'll add that)
+            prompt = tokenizer.apply_chat_template(
+                messages, 
+                tokenize=False, 
+                add_generation_prompt=True
+            )
+            # Add the assistant's response
+            formatted = prompt + pair["output_dot"]
+        else:
+            # Gemma-2B-IT format (fallback)
+            formatted = (
+                f"<bos><start_of_turn>user\n"
+                f"{pair['input_text']}<end_of_turn>\n"
+                f"<start_of_turn>model\n"
+                f"{pair['output_dot']}"
+            )
+        
         return formatted
     
-    def create_dataset(self, train_val_split: float = 0.9) -> Dict[str, Dataset]:
-        """Create train/validation HuggingFace datasets."""
+    def create_dataset(self, train_val_split: float = 0.9, tokenizer=None) -> Dict[str, Dataset]:
+        """Create train/validation HuggingFace datasets.
+        
+        Args:
+            train_val_split: Fraction of data for training
+            tokenizer: Optional tokenizer for chat template formatting
+        """
         all_pairs = self.load_all()
         
         if not all_pairs:
@@ -109,7 +134,7 @@ class AnecDOTDataset:
         # Format as instructions
         formatted = [
             {
-                "text": self.format_instruction(pair),
+                "text": self.format_instruction(pair, tokenizer),
                 "input_text": pair["input_text"],
                 "output_dot": pair["output_dot"],
                 "source": pair["source"]

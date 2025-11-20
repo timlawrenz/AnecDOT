@@ -61,13 +61,17 @@ def load_finetuned_model(checkpoint_path="training/outputs/final"):
 
 def generate_dot(model, tokenizer, prompt, max_tokens=512, temperature=0.7):
     """Generate DOT graph from prompt."""
-    # Format as instruction
-    formatted_prompt = f"""<|system|>
-You are a DOT graph generator. Convert the given input into a valid DOT graph representation.
-<|user|>
-{prompt}
-<|assistant|>
-"""
+    # Use tokenizer's chat template if available
+    if hasattr(tokenizer, 'apply_chat_template'):
+        messages = [{"role": "user", "content": prompt}]
+        formatted_prompt = tokenizer.apply_chat_template(
+            messages,
+            tokenize=False,
+            add_generation_prompt=True
+        )
+    else:
+        # Fallback to Gemma format
+        formatted_prompt = f"<bos><start_of_turn>user\n{prompt}<end_of_turn>\n<start_of_turn>model\n"
     
     inputs = tokenizer(formatted_prompt, return_tensors="pt").to(model.device)
     
@@ -83,8 +87,10 @@ You are a DOT graph generator. Convert the given input into a valid DOT graph re
     
     generated = tokenizer.decode(outputs[0], skip_special_tokens=True)
     
-    # Extract just the assistant's response
-    if "<|assistant|>" in generated:
+    # Extract just the model's response
+    if "<start_of_turn>model" in generated:
+        generated = generated.split("<start_of_turn>model")[-1].strip()
+    elif "<|assistant|>" in generated:
         generated = generated.split("<|assistant|>")[-1].strip()
     
     return generated

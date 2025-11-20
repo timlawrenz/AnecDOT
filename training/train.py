@@ -102,13 +102,15 @@ def main(config_path: str = "training/config.yaml"):
     stats = dataset_loader.get_statistics()
     print(f"Dataset stats: {stats}")
     
-    datasets = dataset_loader.create_dataset(
-        train_val_split=config["train_val_split"]
-    )
-    
     # Setup model and tokenizer
     print("\nSetting up model and tokenizer...")
     model, tokenizer = setup_model_and_tokenizer(config)
+    
+    # Create datasets with proper chat template
+    datasets = dataset_loader.create_dataset(
+        train_val_split=config["train_val_split"],
+        tokenizer=tokenizer  # Pass tokenizer for correct formatting
+    )
     
     # Tokenize datasets
     print("\nTokenizing datasets...")
