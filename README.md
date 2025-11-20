@@ -51,10 +51,10 @@ Three data streams feed the training pipeline:
 
 **Current Dataset Status (as of 2025-01-19):**
 - Documentation Stream: 44 pairs (13 gallery + 31 attributes)
-- Logic Stream: ~57 pairs (python-statemachine: 45, automata: 12)
-- Synthetic Stream: 60 pairs (10 validation + 50 diverse)
-- **Total: ~161 training pairs** (100% syntactically validated)
-- **Target: 250-350 pairs** before Phase II training
+- Logic Stream: 106 pairs (statemachine_cat: 92 + others: 14)
+- Synthetic Stream: 10 pairs
+- **Total: ~160 training pairs** (100% syntactically validated)
+- **Status**: Ready for initial training experiment (Phase II.1)
 - **Sources tracked**: data/sources.txt
 
 ### Data Schema
@@ -74,10 +74,19 @@ Three data streams feed the training pipeline:
 
 ### Model Training (Phase II)
 
-- **Base Models**: Gemma 2 (9B), Llama 3 (8B)
-- **Technique**: QLoRA (Quantized Low-Rank Adaptation)
-- **Hardware**: Single 24GB VRAM GPU (e.g., RTX 4090)
-- **Objective**: Causal Language Modeling optimized for DOT syntax
+**Infrastructure**: QLoRA training pipeline implemented in `training/`
+- **Proof-of-concept**: Gemma-2B-IT (2B parameters, instruction-tuned)
+- **Technique**: QLoRA (4-bit quantization + LoRA adapters)
+- **Hardware**: Consumer GPU (RTX 3060+, 8GB+ VRAM)
+- **Dataset**: ~160 pairs split 90/10 train/validation
+- **Objective**: Validate if fine-tuning measurably improves DOT generation
+
+**Next steps after viability test:**
+- Scale to larger models (Gemma 2 9B, Llama 3 8B) if results promising
+- Expand dataset to 250-350 pairs
+- Optimize hyperparameters based on initial results
+
+See `training/README.md` for setup and execution details.
 
 ## Validation Metrics
 
@@ -100,8 +109,14 @@ AnecDOT/
 ├── parsers/            # FSM extraction and analysis
 ├── generators/         # Synthetic data generation
 ├── validation/         # DOT compiler verification
-├── training/           # Fine-tuning scripts
-└── orchestrator/       # Graph-based execution engine (future)
+├── training/           # QLoRA fine-tuning infrastructure (Phase II)
+│   ├── train.py        # Main training script
+│   ├── dataset.py      # Data loading and preprocessing
+│   ├── eval.py         # Evaluation utilities
+│   ├── config.yaml     # Training configuration
+│   └── README.md       # Training documentation
+├── openspec/           # Change proposals and specs
+└── data/               # Training pairs (not in git)
 ```
 
 ## Licensing & Public Domain Commitment
