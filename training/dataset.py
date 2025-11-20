@@ -32,10 +32,11 @@ class AnecDOTDataset:
             
         pairs = []
         for item in data:
-            if "input_code" in item and "output_dot" in item:
+            # statemachine_cat uses 'code' and 'dot' field names
+            if "code" in item and "dot" in item:
                 pairs.append({
-                    "input_text": item["input_code"],
-                    "output_dot": item["output_dot"],
+                    "input_text": item["code"],
+                    "output_dot": item["dot"],
                     "source": "statemachine_cat"
                 })
         
@@ -99,6 +100,12 @@ class AnecDOTDataset:
         if not all_pairs:
             raise ValueError("No training pairs found in data directory")
         
+        # Filter out any pairs with None values
+        valid_pairs = [p for p in all_pairs if p.get("input_text") and p.get("output_dot")]
+        
+        if not valid_pairs:
+            raise ValueError("No valid pairs found (all have None values)")
+        
         # Format as instructions
         formatted = [
             {
@@ -107,7 +114,7 @@ class AnecDOTDataset:
                 "output_dot": pair["output_dot"],
                 "source": pair["source"]
             }
-            for pair in all_pairs
+            for pair in valid_pairs
         ]
         
         # Split into train/val
@@ -120,7 +127,7 @@ class AnecDOTDataset:
         val_dataset = Dataset.from_list(val_data)
         
         print(f"Loaded {len(train_data)} training examples, {len(val_data)} validation examples")
-        print(f"Sources: {set(pair['source'] for pair in all_pairs)}")
+        print(f"Sources: {set(pair['source'] for pair in valid_pairs)}")
         
         return {
             "train": train_dataset,
@@ -134,16 +141,22 @@ class AnecDOTDataset:
         if not pairs:
             return {"error": "No pairs found"}
         
-        input_lengths = [len(p["input_text"]) for p in pairs]
-        output_lengths = [len(p["output_dot"]) for p in pairs]
+        # Filter out any pairs with None values
+        valid_pairs = [p for p in pairs if p.get("input_text") and p.get("output_dot")]
+        
+        if not valid_pairs:
+            return {"error": "No valid pairs found (all have None values)"}
+        
+        input_lengths = [len(p["input_text"]) for p in valid_pairs]
+        output_lengths = [len(p["output_dot"]) for p in valid_pairs]
         sources = {}
         
-        for pair in pairs:
+        for pair in valid_pairs:
             source = pair["source"]
             sources[source] = sources.get(source, 0) + 1
         
         return {
-            "total_pairs": len(pairs),
+            "total_pairs": len(valid_pairs),
             "avg_input_length": sum(input_lengths) / len(input_lengths),
             "avg_output_length": sum(output_lengths) / len(output_lengths),
             "sources": sources
