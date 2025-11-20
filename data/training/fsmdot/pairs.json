@@ -1,0 +1,26 @@
+[
+  {
+    "source_file": "fsmdot/even_zeros_dfa.py",
+    "dot_file": "fsmdot/even_zeros_dfa.dot",
+    "code": "DFA accepting strings with even number of 0s\nStates: S1 (even), S2 (odd)\nAlphabet: 0, 1\nTransitions: S1--0-->S2, S2--0-->S1, S1--1-->S1, S2--1-->S2\nInitial: S1\nFinal: S1",
+    "dot": "strict digraph FSM {\n\tgraph [rankdir=LR];\n\tnode [shape=circle];\n\tnull\t[shape=point];\n\tS1\t[shape=doublecircle];\n\tnull -> S1;\n\tS1 -> S1\t[label=1];\n\tS1 -> S2\t[label=0];\n\tS2 -> S1\t[label=0];\n\tS2 -> S2\t[label=1];\n}\n",
+    "language": "python",
+    "description": "fsmdot DFA: even number of zeros"
+  },
+  {
+    "source_file": "fsmdot/ends_01_dfa.py",
+    "dot_file": "fsmdot/ends_01_dfa.dot",
+    "code": "DFA accepting strings ending in 01\nStates: A, B, C\nAlphabet: 0, 1\nA: start, B: seen 0, C: seen 01 (final)\nTransitions: A--0-->B, B--1-->C, etc.",
+    "dot": "strict digraph FSM {\n\tgraph [rankdir=LR];\n\tnode [shape=circle];\n\tnull\t[shape=point];\n\tnull -> A;\n\tC\t[shape=doublecircle];\n\tC -> A\t[label=1];\n\tC -> B\t[label=0];\n\tA -> A\t[label=1];\n\tA -> B\t[label=0];\n\tB -> C\t[label=1];\n\tB -> B\t[label=0];\n}\n",
+    "language": "python",
+    "description": "fsmdot DFA: strings ending in 01"
+  },
+  {
+    "source_file": "fsmdot/contains_101_nfa.py",
+    "dot_file": "fsmdot/contains_101_nfa.dot",
+    "code": "NFA accepting strings containing substring 101\nStates: q0 (start), q1 (seen 1), q2 (seen 10), q3 (seen 101, final)\nNon-deterministic transitions on '1' from q0",
+    "dot": "strict digraph FSM {\n\tgraph [rankdir=LR];\n\tnode [shape=circle];\n\tnull\t[shape=point];\n\tnull -> q0;\n\tq3\t[shape=doublecircle];\n\tq3 -> q3\t[label=\"0, 1\"];\n\tq0 -> q0\t[label=\"0, 1\"];\n\tq0 -> q1\t[label=1];\n\tq2 -> q3\t[label=1];\n\tq1 -> q2\t[label=0];\n}\n",
+    "language": "python",
+    "description": "fsmdot NFA: contains 101"
+  }
+]

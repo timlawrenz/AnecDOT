@@ -1,0 +1,34 @@
+[
+  {
+    "source_file": "transitions/simple_fsm.py",
+    "dot_file": "transitions/simple_fsm.dot",
+    "code": "State machine: simple_fsm\nStates: A, B, C, D\nTransitions:\n  - walk: A \u2192 B\n  - run: B \u2192 C\n  - sprint: C \u2192 D\nInitial state: A",
+    "dot": "digraph simple_fsm {\n\tgraph [color=black directed=true fillcolor=white label=simple_fsm rankdir=LR \"strict\"=false style=solid]\n\tnode [color=black fillcolor=white peripheries=1 shape=rectangle style=\"rounded,filled\"]\n\tedge [color=black]\n\tA [label=\"A\\l\" color=red fillcolor=darksalmon peripheries=2]\n\tB [label=\"B\\l\"]\n\tC [label=\"C\\l\"]\n\tD [label=\"D\\l\"]\n\tA -> B [label=walk]\n\tB -> C [label=run]\n\tC -> D [label=sprint]\n}\n",
+    "language": "python",
+    "description": "transitions FSM: simple_fsm"
+  },
+  {
+    "source_file": "transitions/conditional_fsm.py",
+    "dot_file": "transitions/conditional_fsm.dot",
+    "code": "State machine: conditional_fsm\nStates: A, B, C\nTransitions:\n  - go: A \u2192 B [condition: ['is_ready']]\n  - go: A \u2192 C\n  - back: B \u2192 A\n  - back: C \u2192 A\nInitial state: A",
+    "dot": "digraph conditional_fsm {\n\tgraph [color=black directed=true fillcolor=white label=conditional_fsm rankdir=LR \"strict\"=false style=solid]\n\tnode [color=black fillcolor=white peripheries=1 shape=rectangle style=\"rounded,filled\"]\n\tedge [color=black]\n\tA [label=\"A\\l\" color=red fillcolor=darksalmon peripheries=2]\n\tB [label=\"B\\l\"]\n\tC [label=\"C\\l\"]\n\tA -> B [label=go]\n\tA -> C [label=go]\n\tB -> A [label=back]\n\tC -> A [label=back]\n}\n",
+    "language": "python",
+    "description": "transitions FSM: conditional_fsm"
+  },
+  {
+    "source_file": "transitions/traffic_light.py",
+    "dot_file": "transitions/traffic_light.dot",
+    "code": "State machine: traffic_light\nStates: green, yellow, red\nTransitions:\n  - slow_down: green \u2192 yellow\n  - stop: yellow \u2192 red\n  - go: red \u2192 green\nInitial state: green",
+    "dot": "digraph traffic_light {\n\tgraph [color=black directed=true fillcolor=white label=traffic_light rankdir=LR \"strict\"=false style=solid]\n\tnode [color=black fillcolor=white peripheries=1 shape=rectangle style=\"rounded,filled\"]\n\tedge [color=black]\n\tgreen [label=\"green\\l\" color=red fillcolor=darksalmon peripheries=2]\n\tyellow [label=\"yellow\\l\"]\n\tred [label=\"red\\l\"]\n\tgreen -> yellow [label=slow_down]\n\tyellow -> red [label=stop]\n\tred -> green [label=go]\n}\n",
+    "language": "python",
+    "description": "transitions FSM: traffic_light"
+  },
+  {
+    "source_file": "transitions/door_controller.py",
+    "dot_file": "transitions/door_controller.dot",
+    "code": "State machine: door_controller\nStates: closed, opening, open, closing\nTransitions:\n  - open_button: closed \u2192 opening\n  - opened: opening \u2192 open\n  - close_button: open \u2192 closing\n  - closed_complete: closing \u2192 closed\nInitial state: closed",
+    "dot": "digraph door_controller {\n\tgraph [color=black directed=true fillcolor=white label=door_controller rankdir=LR \"strict\"=false style=solid]\n\tnode [color=black fillcolor=white peripheries=1 shape=rectangle style=\"rounded,filled\"]\n\tedge [color=black]\n\tclosed [label=\"closed\\l\" color=red fillcolor=darksalmon peripheries=2]\n\topening [label=\"opening\\l\"]\n\topen [label=\"open\\l\"]\n\tclosing [label=\"closing\\l\"]\n\tclosed -> opening [label=open_button]\n\topening -> open [label=opened]\n\topen -> closing [label=close_button]\n\tclosing -> closed [label=closed_complete]\n}\n",
+    "language": "python",
+    "description": "transitions FSM: door_controller"
+  }
+]

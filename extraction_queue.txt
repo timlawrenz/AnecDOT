@@ -1,0 +1,25 @@
+# FSM Repository Extraction Queue
+# Priority repositories for DOT extraction
+
+## HIGH PRIORITY (likely has .to_dot())
+pytransitions/transitions
+glyph/automat
+Quentin18/fsmdot
+alysivji/finite-state-machine
+
+## MEDIUM PRIORITY (popular, may have visualization)
+viewflow/django-fsm
+django-commons/django-fsm-2
+DLR-RM/RAFCON
+jtushman/state_machine
+rbarrois/xworkflows
+
+## LOWER PRIORITY (check if time permits)
+opsani/statesman
+pgularski/pysm
+vikingco/django-states2
+muxa/esphome-state-machine
+oxplot/fysom
+
+## Target: Extract 20-30 new repos
+## Method: Clone, find examples/tests with .to_dot() or .export(), extract pairs
