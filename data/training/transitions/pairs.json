@@ -30,5 +30,29 @@
     "dot": "digraph door_controller {\n\tgraph [color=black directed=true fillcolor=white label=door_controller rankdir=LR \"strict\"=false style=solid]\n\tnode [color=black fillcolor=white peripheries=1 shape=rectangle style=\"rounded,filled\"]\n\tedge [color=black]\n\tclosed [label=\"closed\\l\" color=red fillcolor=darksalmon peripheries=2]\n\topening [label=\"opening\\l\"]\n\topen [label=\"open\\l\"]\n\tclosing [label=\"closing\\l\"]\n\tclosed -> opening [label=open_button]\n\topening -> open [label=opened]\n\topen -> closing [label=close_button]\n\tclosing -> closed [label=closed_complete]\n}\n",
     "language": "python",
     "description": "transitions FSM: door_controller"
+  },
+  {
+    "source_file": "transitions/developer_workflow.py",
+    "dot_file": "transitions/developer_workflow.dot",
+    "code": "Hierarchical developer workflow\nStates: sleeping, eating, working (with nested: coding, testing, reviewing)\nTransitions include nested state handling",
+    "dot": "digraph developer_workflow {\n\tgraph [color=black directed=true fillcolor=white label=developer_workflow rankdir=LR \"strict\"=false style=solid]\n\tnode [color=black fillcolor=white peripheries=1 shape=rectangle style=\"rounded,filled\"]\n\tedge [color=black]\n\tsubgraph cluster_working {\n\t\tgraph [color=black fillcolor=white label=\"working\\l\" rank=source style=solid]\n\t\tsubgraph cluster_working_root {\n\t\t\tgraph [color=None label=\"\" rank=min]\n\t\t\tworking [fillcolor=black shape=point width=0.1]\n\t\t}\n\t\tworking_coding [label=\"coding\\l\" color=black fillcolor=white peripheries=1 shape=rectangle style=\"rounded,filled\"]\n\t\tworking_testing [label=\"testing\\l\" color=black fillcolor=white peripheries=1 shape=rectangle style=\"rounded,filled\"]\n\t\tworking_reviewing [label=\"reviewing\\l\" color=black fillcolor=white peripheries=1 shape=rectangle style=\"rounded,filled\"]\n\t}\n\tsleeping [label=\"sleeping\\l\" color=red fillcolor=darksalmon peripheries=2 shape=rectangle style=\"rounded,filled\"]\n\teating [label=\"eating\\l\" color=black fillcolor=white peripheries=1 shape=rectangle style=\"rounded,filled\"]\n\tsleeping -> working_coding [label=work]\n\tsleeping -> eating [label=eat]\n\tworking_coding -> working_testing [label=test]\n\tworking_testing -> working_reviewing [label=review]\n\tworking -> sleeping [headlabel=sleep ltail=cluster_working]\n\tworking -> eating [headlabel=eat ltail=cluster_working]\n\teating -> eating [label=eat]\n}\n",
+    "language": "python",
+    "description": "transitions: hierarchical FSM with nested states"
+  },
+  {
+    "source_file": "transitions/linear_workflow.py",
+    "dot_file": "transitions/linear_workflow.dot",
+    "code": "Linear workflow with wildcard transitions\nStates: A, B, C, D, E\nforward: sequential progression\nback/reset: from any state to A",
+    "dot": "digraph linear_workflow {\n\tgraph [color=black directed=true fillcolor=white label=linear_workflow rankdir=LR \"strict\"=false style=solid]\n\tnode [color=black fillcolor=white peripheries=1 shape=rectangle style=\"rounded,filled\"]\n\tedge [color=black]\n\tA [label=\"A\\l\" color=red fillcolor=darksalmon peripheries=2]\n\tB [label=\"B\\l\"]\n\tC [label=\"C\\l\"]\n\tD [label=\"D\\l\"]\n\tE [label=\"E\\l\"]\n\tA -> B [label=forward]\n\tA -> A [label=\"back | reset\"]\n\tB -> C [label=forward]\n\tB -> A [label=\"back | reset\"]\n\tC -> D [label=forward]\n\tC -> A [label=\"back | reset\"]\n\tD -> E [label=forward]\n\tD -> A [label=\"back | reset\"]\n\tE -> A [label=\"back | reset\"]\n}\n",
+    "language": "python",
+    "description": "transitions: linear workflow with wildcards"
+  },
+  {
+    "source_file": "transitions/simple_toggle.py",
+    "dot_file": "transitions/simple_toggle.dot",
+    "code": "Simple toggle FSM\nStates: idle, active\nstart: idle -> active\nstop: active -> idle",
+    "dot": "digraph simple_toggle {\n\tgraph [color=black directed=true fillcolor=white label=simple_toggle rankdir=LR \"strict\"=false style=solid]\n\tnode [color=black fillcolor=white peripheries=1 shape=rectangle style=\"rounded,filled\"]\n\tedge [color=black]\n\tidle [label=\"idle\\l\" color=red fillcolor=darksalmon peripheries=2]\n\tactive [label=\"active\\l\"]\n\tidle -> active [label=start]\n\tactive -> idle [label=stop]\n}\n",
+    "language": "python",
+    "description": "transitions: simple toggle"
   }
 ]

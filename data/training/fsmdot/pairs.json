@@ -1,26 +1,58 @@
 [
   {
-    "source_file": "fsmdot/even_zeros_dfa.py",
-    "dot_file": "fsmdot/even_zeros_dfa.dot",
-    "code": "DFA accepting strings with even number of 0s\nStates: S1 (even), S2 (odd)\nAlphabet: 0, 1\nTransitions: S1--0-->S2, S2--0-->S1, S1--1-->S1, S2--1-->S2\nInitial: S1\nFinal: S1",
-    "dot": "strict digraph FSM {\n\tgraph [rankdir=LR];\n\tnode [shape=circle];\n\tnull\t[shape=point];\n\tS1\t[shape=doublecircle];\n\tnull -> S1;\n\tS1 -> S1\t[label=1];\n\tS1 -> S2\t[label=0];\n\tS2 -> S1\t[label=0];\n\tS2 -> S2\t[label=1];\n}\n",
+    "source_file": "fsmdot/example1_dfa.py",
+    "dot_file": "fsmdot/graph1_dfa.dot",
+    "code": "Example 1: DFA\n\nAutomaton definition:\nQ = {'S1', 'S2'}\nS = {'0', '1'}\nd = {\nq0 = 'S1'\nF = {'S1'}",
+    "dot": "strict digraph FSM {\n\tgraph [rankdir=LR];\n\tnode [shape=circle];\n\tnull\t[shape=point];\n\tS1\t[shape=doublecircle];\n\tnull -> S1;\n\tS2 -> S2\t[label=1];\n\tS2 -> S1\t[label=0];\n\tS1 -> S2\t[label=0];\n\tS1 -> S1\t[label=1];\n}\n",
     "language": "python",
-    "description": "fsmdot DFA: even number of zeros"
+    "description": "fsmdot: Example 1: DFA"
   },
   {
-    "source_file": "fsmdot/ends_01_dfa.py",
-    "dot_file": "fsmdot/ends_01_dfa.dot",
-    "code": "DFA accepting strings ending in 01\nStates: A, B, C\nAlphabet: 0, 1\nA: start, B: seen 0, C: seen 01 (final)\nTransitions: A--0-->B, B--1-->C, etc.",
-    "dot": "strict digraph FSM {\n\tgraph [rankdir=LR];\n\tnode [shape=circle];\n\tnull\t[shape=point];\n\tnull -> A;\n\tC\t[shape=doublecircle];\n\tC -> A\t[label=1];\n\tC -> B\t[label=0];\n\tA -> A\t[label=1];\n\tA -> B\t[label=0];\n\tB -> C\t[label=1];\n\tB -> B\t[label=0];\n}\n",
+    "source_file": "fsmdot/example2_dfa.py",
+    "dot_file": "fsmdot/graph2_dfa.dot",
+    "code": "Example 2: DFA\n\nAutomaton definition:\nQ = {'S0', 'S1', 'S2'}\nS = {'0', '1'}\nd = {\nq0 = 'S0'\nF = {'S0'}",
+    "dot": "strict digraph FSM {\n\tgraph [rankdir=LR];\n\tnode [shape=circle];\n\tnull\t[shape=point];\n\tS0\t[shape=doublecircle];\n\tnull -> S0;\n\tS0 -> S0\t[label=0];\n\tS0 -> S1\t[label=1];\n\tS1 -> S0\t[label=1];\n\tS1 -> S2\t[label=0];\n\tS2 -> S1\t[label=0];\n\tS2 -> S2\t[label=1];\n}\n",
     "language": "python",
-    "description": "fsmdot DFA: strings ending in 01"
+    "description": "fsmdot: Example 2: DFA"
   },
   {
-    "source_file": "fsmdot/contains_101_nfa.py",
-    "dot_file": "fsmdot/contains_101_nfa.dot",
-    "code": "NFA accepting strings containing substring 101\nStates: q0 (start), q1 (seen 1), q2 (seen 10), q3 (seen 101, final)\nNon-deterministic transitions on '1' from q0",
-    "dot": "strict digraph FSM {\n\tgraph [rankdir=LR];\n\tnode [shape=circle];\n\tnull\t[shape=point];\n\tnull -> q0;\n\tq3\t[shape=doublecircle];\n\tq3 -> q3\t[label=\"0, 1\"];\n\tq0 -> q0\t[label=\"0, 1\"];\n\tq0 -> q1\t[label=1];\n\tq2 -> q3\t[label=1];\n\tq1 -> q2\t[label=0];\n}\n",
+    "source_file": "fsmdot/example3_nfa.py",
+    "dot_file": "fsmdot/graph3_nfa.dot",
+    "code": "Example 3: NFA\n\nAutomaton definition:\nQ = {'p', 'q'}\nS = {'0', '1'}\nd = {\nq0 = 'p'\nF = {'q'}",
+    "dot": "strict digraph FSM {\n\tgraph [rankdir=LR];\n\tnode [shape=circle];\n\tnull\t[shape=point];\n\tnull -> p;\n\tq\t[shape=doublecircle];\n\tp -> q\t[label=1];\n\tp -> p\t[label=\"0, 1\"];\n}\n",
     "language": "python",
-    "description": "fsmdot NFA: contains 101"
+    "description": "fsmdot: Example 3: NFA"
+  },
+  {
+    "source_file": "fsmdot/example4_nfa.py",
+    "dot_file": "fsmdot/graph4_nfa.dot",
+    "code": "Example 4: NFA\n\nAutomaton definition:\nQ = {0, 1, 2, 3}\nS = {'a', 'b'}\nd = {\nq0 = 0\nF = {3}",
+    "dot": "strict digraph FSM {\n\tgraph [rankdir=LR];\n\tnode [shape=circle];\n\tnull\t[shape=point];\n\tnull -> 0;\n\t0 -> 0\t[label=\"a, b\"];\n\t0 -> 1\t[label=a];\n\t1 -> 2\t[label=a];\n\t3\t[shape=doublecircle];\n\t2 -> 3\t[label=a];\n\t3 -> 3\t[label=\"a, b\"];\n}\n",
+    "language": "python",
+    "description": "fsmdot: Example 4: NFA"
+  },
+  {
+    "source_file": "fsmdot/example5_nfa.py",
+    "dot_file": "fsmdot/graph5_nfa.dot",
+    "code": "Example 5: NFA\n\nAutomaton definition:\nQ = {'S0', 'S1', 'S2', 'S3', 'S4'}\nS = {'0', '1', Nfa.EPSILON}\nd = {\nq0 = 'S0'\nF = {'S1', 'S3'}",
+    "dot": "strict digraph FSM {\n\tgraph [rankdir=LR];\n\tnode [shape=circle];\n\tnull\t[shape=point];\n\tnull -> S0;\n\tS3\t[shape=doublecircle];\n\tS3 -> S3\t[label=0];\n\tS3 -> S4\t[label=1];\n\tS4 -> S3\t[label=1];\n\tS4 -> S4\t[label=0];\n\tS0 -> S3\t[label=\u03b5];\n\tS1\t[shape=doublecircle];\n\tS0 -> S1\t[label=\u03b5];\n\tS1 -> S1\t[label=1];\n\tS1 -> S2\t[label=0];\n\tS2 -> S1\t[label=0];\n\tS2 -> S2\t[label=1];\n}\n",
+    "language": "python",
+    "description": "fsmdot: Example 5: NFA"
+  },
+  {
+    "source_file": "fsmdot/example6_nfa.py",
+    "dot_file": "fsmdot/graph6_dfa.dot",
+    "code": "Example 6: NFA\n\nAutomaton definition:\nQ = {1, 2, 3, 4}\nS = {Nfa.EPSILON, '0', '1'}\nd = {\nq0 = 1\nF = {3, 4}",
+    "dot": "strict digraph FSM {\n\tgraph [rankdir=LR];\n\tnode [shape=circle];\n\tnull\t[shape=point];\n\t\"{1, 2, 3}\"\t[shape=doublecircle];\n\tnull -> \"{1, 2, 3}\";\n\t\"{2, 4}\"\t[shape=doublecircle];\n\t\"{2, 4}\" -> \"{2, 4}\"\t[label=1];\n\t\"{2, 3}\"\t[shape=doublecircle];\n\t\"{2, 4}\" -> \"{2, 3}\"\t[label=0];\n\t\"{1, 2, 3}\" -> \"{2, 4}\"\t[label=\"1, 0\"];\n\t\"{4}\"\t[shape=doublecircle];\n\t\"{4}\" -> \"{2, 3}\"\t[label=0];\n\t\"{2, 3}\" -> \"{2, 4}\"\t[label=1];\n\t\"{2, 3}\" -> \"{4}\"\t[label=0];\n}\n",
+    "language": "python",
+    "description": "fsmdot: Example 6: NFA"
+  },
+  {
+    "source_file": "fsmdot/example7_nfa.py",
+    "dot_file": "fsmdot/graph7_nfa.dot",
+    "code": "Example 7: NFA\n\nAutomaton definition:\nQ = {'X', '0', '1', '2', '3'}\nS = {'0', '1'}\nd = {\nq0 = 'X'\nF = {'3'}",
+    "dot": "strict digraph FSM {\n\tgraph [rankdir=LR];\n\tnode [shape=circle];\n\tnull\t[shape=point];\n\tnull -> X;\n\t1 -> 2\t[label=\"0, 1\"];\n\t3\t[shape=doublecircle];\n\t2 -> 3\t[label=\"0, 1\"];\n\tX -> X\t[label=\"0, 1\"];\n\tX -> 0\t[label=1];\n\t0 -> 1\t[label=\"0, 1\"];\n}\n",
+    "language": "python",
+    "description": "fsmdot: Example 7: NFA"
   }
 ]
