@@ -1,0 +1,302 @@
+[
+  {
+    "id": "synthetic_batch_000",
+    "prompt": "User authentication flow (idle, logging_in, authenticated, logging_out, logged_out)",
+    "status": "queued",
+    "timestamp": 1763654889.038601
+  },
+  {
+    "id": "synthetic_batch_001",
+    "prompt": "HTTP request lifecycle (pending, sending, sent, receiving, received, error)",
+    "status": "queued",
+    "timestamp": 1763654889.0386105
+  },
+  {
+    "id": "synthetic_batch_002",
+    "prompt": "Order processing (placed, confirmed, preparing, shipped, delivered, cancelled)",
+    "status": "queued",
+    "timestamp": 1763654889.038617
+  },
+  {
+    "id": "synthetic_batch_003",
+    "prompt": "Video player states (stopped, playing, paused, buffering, ended)",
+    "status": "queued",
+    "timestamp": 1763654889.0386224
+  },
+  {
+    "id": "synthetic_batch_004",
+    "prompt": "Connection states (disconnected, connecting, connected, reconnecting, failed)",
+    "status": "queued",
+    "timestamp": 1763654889.0386279
+  },
+  {
+    "id": "synthetic_batch_005",
+    "prompt": "Game character states (idle, walking, running, jumping, attacking, dead)",
+    "status": "queued",
+    "timestamp": 1763654889.038633
+  },
+  {
+    "id": "synthetic_batch_006",
+    "prompt": "Database transaction (begin, active, committing, committed, rolling_back, rolled_back)",
+    "status": "queued",
+    "timestamp": 1763654889.0386393
+  },
+  {
+    "id": "synthetic_batch_007",
+    "prompt": "WebSocket connection (closed, connecting, open, closing, error)",
+    "status": "queued",
+    "timestamp": 1763654889.0386455
+  },
+  {
+    "id": "synthetic_batch_008",
+    "prompt": "File upload (queued, uploading, processing, complete, failed)",
+    "status": "queued",
+    "timestamp": 1763654889.0386531
+  },
+  {
+    "id": "synthetic_batch_009",
+    "prompt": "Payment processing (initiated, authorizing, authorized, capturing, captured, refunded)",
+    "status": "queued",
+    "timestamp": 1763654889.0386608
+  },
+  {
+    "id": "synthetic_batch_010",
+    "prompt": "CI/CD pipeline (build \u2192 test \u2192 deploy \u2192 verify)",
+    "status": "queued",
+    "timestamp": 1763654889.0386713
+  },
+  {
+    "id": "synthetic_batch_011",
+    "prompt": "Code review process (submitted \u2192 reviewing \u2192 approved \u2192 merged)",
+    "status": "queued",
+    "timestamp": 1763654889.038678
+  },
+  {
+    "id": "synthetic_batch_012",
+    "prompt": "Bug triage workflow (reported \u2192 triaged \u2192 assigned \u2192 in_progress \u2192 resolved \u2192 closed)",
+    "status": "queued",
+    "timestamp": 1763654889.0386834
+  },
+  {
+    "id": "synthetic_batch_013",
+    "prompt": "Content publishing (draft \u2192 review \u2192 approved \u2192 published \u2192 archived)",
+    "status": "queued",
+    "timestamp": 1763654889.0386887
+  },
+  {
+    "id": "synthetic_batch_014",
+    "prompt": "Employee onboarding (application \u2192 interview \u2192 offer \u2192 hired \u2192 training \u2192 active)",
+    "status": "queued",
+    "timestamp": 1763654889.0386944
+  },
+  {
+    "id": "synthetic_batch_015",
+    "prompt": "Customer support ticket (open \u2192 assigned \u2192 investigating \u2192 resolved \u2192 closed)",
+    "status": "queued",
+    "timestamp": 1763654889.0387
+  },
+  {
+    "id": "synthetic_batch_016",
+    "prompt": "Invoice processing (received \u2192 validated \u2192 approved \u2192 paid \u2192 archived)",
+    "status": "queued",
+    "timestamp": 1763654889.0387053
+  },
+  {
+    "id": "synthetic_batch_017",
+    "prompt": "Release management (development \u2192 staging \u2192 production \u2192 rollback)",
+    "status": "queued",
+    "timestamp": 1763654889.0387108
+  },
+  {
+    "id": "synthetic_batch_018",
+    "prompt": "Data pipeline (extract \u2192 transform \u2192 validate \u2192 load \u2192 archive)",
+    "status": "queued",
+    "timestamp": 1763654889.0387173
+  },
+  {
+    "id": "synthetic_batch_019",
+    "prompt": "Incident response (detected \u2192 investigating \u2192 mitigating \u2192 resolved \u2192 postmortem)",
+    "status": "queued",
+    "timestamp": 1763654889.038723
+  },
+  {
+    "id": "synthetic_batch_020",
+    "prompt": "Microservices architecture (API Gateway \u2192 Auth Service \u2192 User Service \u2192 Database)",
+    "status": "queued",
+    "timestamp": 1763654889.038729
+  },
+  {
+    "id": "synthetic_batch_021",
+    "prompt": "Load balancer \u2192 Web Servers \u2192 Application Servers \u2192 Database cluster",
+    "status": "queued",
+    "timestamp": 1763654889.0387342
+  },
+  {
+    "id": "synthetic_batch_022",
+    "prompt": "CDN \u2192 Origin Server \u2192 Cache Layer \u2192 Backend API",
+    "status": "queued",
+    "timestamp": 1763654889.03874
+  },
+  {
+    "id": "synthetic_batch_023",
+    "prompt": "Client \u2192 Proxy \u2192 Firewall \u2192 Application Server \u2192 Database",
+    "status": "queued",
+    "timestamp": 1763654889.0387454
+  },
+  {
+    "id": "synthetic_batch_024",
+    "prompt": "Message Queue (Producer \u2192 Queue \u2192 Consumer \u2192 Result Store)",
+    "status": "queued",
+    "timestamp": 1763654889.038751
+  },
+  {
+    "id": "synthetic_batch_025",
+    "prompt": "Event-driven architecture (Event Source \u2192 Event Bus \u2192 Handlers \u2192 Storage)",
+    "status": "queued",
+    "timestamp": 1763654889.0387566
+  },
+  {
+    "id": "synthetic_batch_026",
+    "prompt": "3-tier web app (Presentation \u2192 Business Logic \u2192 Data Access \u2192 Database)",
+    "status": "queued",
+    "timestamp": 1763654889.0387616
+  },
+  {
+    "id": "synthetic_batch_027",
+    "prompt": "Distributed cache (Client \u2192 Cache Nodes \u2192 Database fallback)",
+    "status": "queued",
+    "timestamp": 1763654889.0387678
+  },
+  {
+    "id": "synthetic_batch_028",
+    "prompt": "Service mesh (Services with sidecars and control plane)",
+    "status": "queued",
+    "timestamp": 1763654889.0387754
+  },
+  {
+    "id": "synthetic_batch_029",
+    "prompt": "Data replication (Primary \u2192 Replicas with bidirectional sync)",
+    "status": "queued",
+    "timestamp": 1763654889.0387833
+  },
+  {
+    "id": "synthetic_batch_030",
+    "prompt": "Python package dependencies (numpy, pandas, scikit-learn, matplotlib)",
+    "status": "queued",
+    "timestamp": 1763654889.038791
+  },
+  {
+    "id": "synthetic_batch_031",
+    "prompt": "JavaScript module imports (React \u2192 ReactDOM, hooks, components)",
+    "status": "queued",
+    "timestamp": 1763654889.0387983
+  },
+  {
+    "id": "synthetic_batch_032",
+    "prompt": "Build system dependencies (source \u2192 compile \u2192 link \u2192 test \u2192 package)",
+    "status": "queued",
+    "timestamp": 1763654889.0388055
+  },
+  {
+    "id": "synthetic_batch_033",
+    "prompt": "Library dependency tree (core \u2192 utils \u2192 features \u2192 plugins)",
+    "status": "queued",
+    "timestamp": 1763654889.0388114
+  },
+  {
+    "id": "synthetic_batch_034",
+    "prompt": "Microservice dependencies (auth-service, user-service, notification-service, payment-service)",
+    "status": "queued",
+    "timestamp": 1763654889.0388184
+  },
+  {
+    "id": "synthetic_batch_035",
+    "prompt": "Docker image layers (base \u2192 runtime \u2192 dependencies \u2192 application \u2192 config)",
+    "status": "queued",
+    "timestamp": 1763654889.0388236
+  },
+  {
+    "id": "synthetic_batch_036",
+    "prompt": "Database schema dependencies (users \u2192 posts \u2192 comments \u2192 likes)",
+    "status": "queued",
+    "timestamp": 1763654889.0388296
+  },
+  {
+    "id": "synthetic_batch_037",
+    "prompt": "CSS framework dependencies (reset \u2192 base \u2192 components \u2192 utilities \u2192 themes)",
+    "status": "queued",
+    "timestamp": 1763654889.0388372
+  },
+  {
+    "id": "synthetic_batch_038",
+    "prompt": "API versioning dependencies (v1 \u2192 v2 \u2192 v3 with deprecation paths)",
+    "status": "queued",
+    "timestamp": 1763654889.038843
+  },
+  {
+    "id": "synthetic_batch_039",
+    "prompt": "Feature flags dependency graph (base-features \u2192 experimental \u2192 beta \u2192 stable)",
+    "status": "queued",
+    "timestamp": 1763654889.0388484
+  },
+  {
+    "id": "synthetic_batch_040",
+    "prompt": "User permission check (is_authenticated? \u2192 is_admin? \u2192 has_permission? \u2192 grant/deny)",
+    "status": "queued",
+    "timestamp": 1763654889.0388544
+  },
+  {
+    "id": "synthetic_batch_041",
+    "prompt": "Error handling (try \u2192 success/error \u2192 retry? \u2192 log/escalate)",
+    "status": "queued",
+    "timestamp": 1763654889.0388613
+  },
+  {
+    "id": "synthetic_batch_042",
+    "prompt": "Caching decision (in_cache? \u2192 valid? \u2192 return/fetch \u2192 update_cache)",
+    "status": "queued",
+    "timestamp": 1763654889.0388687
+  },
+  {
+    "id": "synthetic_batch_043",
+    "prompt": "Request routing (path match? \u2192 method match? \u2192 auth check? \u2192 route to handler)",
+    "status": "queued",
+    "timestamp": 1763654889.0388744
+  },
+  {
+    "id": "synthetic_batch_044",
+    "prompt": "Data validation (type_check \u2192 range_check \u2192 format_check \u2192 pass/fail)",
+    "status": "queued",
+    "timestamp": 1763654889.0388815
+  },
+  {
+    "id": "synthetic_batch_045",
+    "prompt": "Search algorithm (exact_match? \u2192 fuzzy_match? \u2192 semantic_search \u2192 no_results)",
+    "status": "queued",
+    "timestamp": 1763654889.0388882
+  },
+  {
+    "id": "synthetic_batch_046",
+    "prompt": "Pricing tier selection (usage \u2192 tier1/tier2/tier3/enterprise \u2192 calculate price)",
+    "status": "queued",
+    "timestamp": 1763654889.0388932
+  },
+  {
+    "id": "synthetic_batch_047",
+    "prompt": "Feature availability (user_tier \u2192 region \u2192 device \u2192 enable/disable feature)",
+    "status": "queued",
+    "timestamp": 1763654889.038899
+  },
+  {
+    "id": "synthetic_batch_048",
+    "prompt": "Content moderation (scan \u2192 flagged? \u2192 review \u2192 approve/reject/escalate)",
+    "status": "queued",
+    "timestamp": 1763654889.038905
+  },
+  {
+    "id": "synthetic_batch_049",
+    "prompt": "Load shedding (load > threshold? \u2192 priority check \u2192 accept/reject/queue)",
+    "status": "queued",
+    "timestamp": 1763654889.0389113
+  }
+]
