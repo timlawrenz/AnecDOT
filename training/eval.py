@@ -37,9 +37,19 @@ def is_valid_dot_syntax(dot_string: str) -> bool:
 
 def extract_dot_from_response(response: str) -> Optional[str]:
     """Extract DOT graph from model response."""
-    # Remove prompt prefix if present
-    if "<start_of_turn>model" in response:
-        response = response.split("<start_of_turn>model")[-1]
+    # Remove common prompt/response prefixes
+    prefixes_to_remove = [
+        "<start_of_turn>model",
+        "<|assistant|>",
+        "model\n",  # Gemma sometimes adds this
+        "user\n",   # Remove user prefix too
+    ]
+    
+    cleaned_response = response
+    for prefix in prefixes_to_remove:
+        if prefix in cleaned_response:
+            # Take everything after the last occurrence
+            cleaned_response = cleaned_response.split(prefix)[-1]
     
     # Try to find DOT graph between common delimiters
     patterns = [
@@ -49,18 +59,18 @@ def extract_dot_from_response(response: str) -> Optional[str]:
     ]
     
     for pattern in patterns:
-        match = re.search(pattern, response, re.DOTALL | re.IGNORECASE)
+        match = re.search(pattern, cleaned_response, re.DOTALL | re.IGNORECASE)
         if match:
             return match.group(1).strip()
     
     # Find digraph/graph with balanced braces
     # Look for 'digraph' or 'graph' followed by balanced {}
     for start_pattern in [r'\bdigraph\b', r'\bgraph\b']:
-        match = re.search(start_pattern, response, re.IGNORECASE)
+        match = re.search(start_pattern, cleaned_response, re.IGNORECASE)
         if match:
             start_pos = match.start()
             # Find balanced braces starting from this position
-            dot_candidate = extract_balanced_braces(response[start_pos:])
+            dot_candidate = extract_balanced_braces(cleaned_response[start_pos:])
             if dot_candidate:
                 return dot_candidate
     

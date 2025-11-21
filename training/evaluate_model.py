@@ -59,7 +59,7 @@ def load_finetuned_model(checkpoint_path="training/outputs/final"):
     return model, tokenizer
 
 
-def generate_dot(model, tokenizer, prompt, max_tokens=512, temperature=0.7):
+def generate_dot(model, tokenizer, prompt, max_tokens=1024, temperature=0.7):
     """Generate DOT graph from prompt."""
     # Use tokenizer's chat template if available
     if hasattr(tokenizer, 'apply_chat_template'):
