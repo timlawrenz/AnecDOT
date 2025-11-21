@@ -48,7 +48,8 @@ class AnecDOTDataset:
             "synthetic-stream.jsonl",
             "logic-stream.jsonl",
             "documentation-stream.jsonl",
-            "attribute-docs-stream.jsonl"
+            "attribute-docs-stream.jsonl",
+            "error-correction-stream.jsonl"
         ]
         
         pairs = []
