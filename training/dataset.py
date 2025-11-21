@@ -75,6 +75,25 @@ class AnecDOTDataset:
     
     def load_all(self) -> List[Dict]:
         """Load all training pairs from all sources."""
+        
+        # Phase II.2.6: Use all-pairs-v2.jsonl with improved prompts
+        v2_path = self.data_dir / "all-pairs-v2.jsonl"
+        if v2_path.exists():
+            print(f"Loading Phase II.2.6 data from {v2_path}...")
+            pairs = []
+            with open(v2_path) as f:
+                for line in f:
+                    try:
+                        pair = json.loads(line)
+                        if "input_text" in pair and "output_dot" in pair:
+                            pairs.append(pair)
+                    except json.JSONDecodeError:
+                        continue
+            # Shuffle to mix sources
+            random.shuffle(pairs)
+            return pairs
+        
+        # Fallback to original method
         pairs = []
         pairs.extend(self.load_pairs_json())
         pairs.extend(self.load_jsonl_streams())
