@@ -3,7 +3,7 @@
     "source_file": "transitions/simple_fsm.py",
     "dot_file": "transitions/simple_fsm.dot",
     "code": "State machine: simple_fsm\nStates: A, B, C, D\nTransitions:\n  - walk: A \u2192 B\n  - run: B \u2192 C\n  - sprint: C \u2192 D\nInitial state: A",
-    "dot": "digraph simple_fsm {\n\tgraph [color=black directed=true fillcolor=white label=simple_fsm rankdir=LR \"strict\"=false style=solid]\n\tnode [color=black fillcolor=white peripheries=1 shape=rectangle style=\"rounded,filled\"]\n\tedge [color=black]\n\tA [label=\"A\\l\" color=red fillcolor=darksalmon peripheries=2]\n\tB [label=\"B\\l\"]\n\tC [label=\"C\\l\"]\n\tD [label=\"D\\l\"]\n\tA -> B [label=walk]\n\tB -> C [label=run]\n\tC -> D [label=sprint]\n}\n",
+    "dot": "---\nsimple_fsm\n---\nstateDiagram-v2\n  direction LR\n  classDef s_default fill:white,color:black\n  classDef s_inactive fill:white,color:black\n  classDef s_parallel color:black,fill:white\n  classDef s_active color:red,fill:darksalmon\n  classDef s_previous color:blue,fill:azure\n  \n  state \"A\" as A\n  Class A s_active\n  state \"B\" as B\n  Class B s_default\n  state \"C\" as C\n  Class C s_default\n  state \"D\" as D\n  Class D s_default\n  \n  A --> B: walk\n  B --> C: run\n  C --> D: sprint\n  [*] --> A",
     "language": "python",
     "description": "transitions FSM: simple_fsm"
   },
@@ -11,7 +11,7 @@
     "source_file": "transitions/conditional_fsm.py",
     "dot_file": "transitions/conditional_fsm.dot",
     "code": "State machine: conditional_fsm\nStates: A, B, C\nTransitions:\n  - go: A \u2192 B [condition: ['is_ready']]\n  - go: A \u2192 C\n  - back: B \u2192 A\n  - back: C \u2192 A\nInitial state: A",
-    "dot": "digraph conditional_fsm {\n\tgraph [color=black directed=true fillcolor=white label=conditional_fsm rankdir=LR \"strict\"=false style=solid]\n\tnode [color=black fillcolor=white peripheries=1 shape=rectangle style=\"rounded,filled\"]\n\tedge [color=black]\n\tA [label=\"A\\l\" color=red fillcolor=darksalmon peripheries=2]\n\tB [label=\"B\\l\"]\n\tC [label=\"C\\l\"]\n\tA -> B [label=go]\n\tA -> C [label=go]\n\tB -> A [label=back]\n\tC -> A [label=back]\n}\n",
+    "dot": "---\nconditional_fsm\n---\nstateDiagram-v2\n  direction LR\n  classDef s_default fill:white,color:black\n  classDef s_inactive fill:white,color:black\n  classDef s_parallel color:black,fill:white\n  classDef s_active color:red,fill:darksalmon\n  classDef s_previous color:blue,fill:azure\n  \n  state \"A\" as A\n  Class A s_active\n  state \"B\" as B\n  Class B s_default\n  state \"C\" as C\n  Class C s_default\n  \n  A --> B: go\n  A --> C: go\n  B --> A: back\n  C --> A: back\n  [*] --> A",
     "language": "python",
     "description": "transitions FSM: conditional_fsm"
   },
@@ -19,7 +19,7 @@
     "source_file": "transitions/traffic_light.py",
     "dot_file": "transitions/traffic_light.dot",
     "code": "State machine: traffic_light\nStates: green, yellow, red\nTransitions:\n  - slow_down: green \u2192 yellow\n  - stop: yellow \u2192 red\n  - go: red \u2192 green\nInitial state: green",
-    "dot": "digraph traffic_light {\n\tgraph [color=black directed=true fillcolor=white label=traffic_light rankdir=LR \"strict\"=false style=solid]\n\tnode [color=black fillcolor=white peripheries=1 shape=rectangle style=\"rounded,filled\"]\n\tedge [color=black]\n\tgreen [label=\"green\\l\" color=red fillcolor=darksalmon peripheries=2]\n\tyellow [label=\"yellow\\l\"]\n\tred [label=\"red\\l\"]\n\tgreen -> yellow [label=slow_down]\n\tyellow -> red [label=stop]\n\tred -> green [label=go]\n}\n",
+    "dot": "---\ntraffic_light\n---\nstateDiagram-v2\n  direction LR\n  classDef s_default fill:white,color:black\n  classDef s_inactive fill:white,color:black\n  classDef s_parallel color:black,fill:white\n  classDef s_active color:red,fill:darksalmon\n  classDef s_previous color:blue,fill:azure\n  \n  state \"green\" as green\n  Class green s_active\n  state \"yellow\" as yellow\n  Class yellow s_default\n  state \"red\" as red\n  Class red s_default\n  \n  green --> yellow: slow_down\n  yellow --> red: stop\n  red --> green: go\n  [*] --> green",
     "language": "python",
     "description": "transitions FSM: traffic_light"
   },
@@ -27,32 +27,8 @@
     "source_file": "transitions/door_controller.py",
     "dot_file": "transitions/door_controller.dot",
     "code": "State machine: door_controller\nStates: closed, opening, open, closing\nTransitions:\n  - open_button: closed \u2192 opening\n  - opened: opening \u2192 open\n  - close_button: open \u2192 closing\n  - closed_complete: closing \u2192 closed\nInitial state: closed",
-    "dot": "digraph door_controller {\n\tgraph [color=black directed=true fillcolor=white label=door_controller rankdir=LR \"strict\"=false style=solid]\n\tnode [color=black fillcolor=white peripheries=1 shape=rectangle style=\"rounded,filled\"]\n\tedge [color=black]\n\tclosed [label=\"closed\\l\" color=red fillcolor=darksalmon peripheries=2]\n\topening [label=\"opening\\l\"]\n\topen [label=\"open\\l\"]\n\tclosing [label=\"closing\\l\"]\n\tclosed -> opening [label=open_button]\n\topening -> open [label=opened]\n\topen -> closing [label=close_button]\n\tclosing -> closed [label=closed_complete]\n}\n",
+    "dot": "---\ndoor_controller\n---\nstateDiagram-v2\n  direction LR\n  classDef s_default fill:white,color:black\n  classDef s_inactive fill:white,color:black\n  classDef s_parallel color:black,fill:white\n  classDef s_active color:red,fill:darksalmon\n  classDef s_previous color:blue,fill:azure\n  \n  state \"closed\" as closed\n  Class closed s_active\n  state \"opening\" as opening\n  Class opening s_default\n  state \"open\" as open\n  Class open s_default\n  state \"closing\" as closing\n  Class closing s_default\n  \n  closed --> opening: open_button\n  opening --> open: opened\n  open --> closing: close_button\n  closing --> closed: closed_complete\n  [*] --> closed",
     "language": "python",
     "description": "transitions FSM: door_controller"
-  },
-  {
-    "source_file": "transitions/developer_workflow.py",
-    "dot_file": "transitions/developer_workflow.dot",
-    "code": "Hierarchical developer workflow\nStates: sleeping, eating, working (with nested: coding, testing, reviewing)\nTransitions include nested state handling",
-    "dot": "digraph developer_workflow {\n\tgraph [color=black directed=true fillcolor=white label=developer_workflow rankdir=LR \"strict\"=false style=solid]\n\tnode [color=black fillcolor=white peripheries=1 shape=rectangle style=\"rounded,filled\"]\n\tedge [color=black]\n\tsubgraph cluster_working {\n\t\tgraph [color=black fillcolor=white label=\"working\\l\" rank=source style=solid]\n\t\tsubgraph cluster_working_root {\n\t\t\tgraph [color=None label=\"\" rank=min]\n\t\t\tworking [fillcolor=black shape=point width=0.1]\n\t\t}\n\t\tworking_coding [label=\"coding\\l\" color=black fillcolor=white peripheries=1 shape=rectangle style=\"rounded,filled\"]\n\t\tworking_testing [label=\"testing\\l\" color=black fillcolor=white peripheries=1 shape=rectangle style=\"rounded,filled\"]\n\t\tworking_reviewing [label=\"reviewing\\l\" color=black fillcolor=white peripheries=1 shape=rectangle style=\"rounded,filled\"]\n\t}\n\tsleeping [label=\"sleeping\\l\" color=red fillcolor=darksalmon peripheries=2 shape=rectangle style=\"rounded,filled\"]\n\teating [label=\"eating\\l\" color=black fillcolor=white peripheries=1 shape=rectangle style=\"rounded,filled\"]\n\tsleeping -> working_coding [label=work]\n\tsleeping -> eating [label=eat]\n\tworking_coding -> working_testing [label=test]\n\tworking_testing -> working_reviewing [label=review]\n\tworking -> sleeping [headlabel=sleep ltail=cluster_working]\n\tworking -> eating [headlabel=eat ltail=cluster_working]\n\teating -> eating [label=eat]\n}\n",
-    "language": "python",
-    "description": "transitions: hierarchical FSM with nested states"
-  },
-  {
-    "source_file": "transitions/linear_workflow.py",
-    "dot_file": "transitions/linear_workflow.dot",
-    "code": "Linear workflow with wildcard transitions\nStates: A, B, C, D, E\nforward: sequential progression\nback/reset: from any state to A",
-    "dot": "digraph linear_workflow {\n\tgraph [color=black directed=true fillcolor=white label=linear_workflow rankdir=LR \"strict\"=false style=solid]\n\tnode [color=black fillcolor=white peripheries=1 shape=rectangle style=\"rounded,filled\"]\n\tedge [color=black]\n\tA [label=\"A\\l\" color=red fillcolor=darksalmon peripheries=2]\n\tB [label=\"B\\l\"]\n\tC [label=\"C\\l\"]\n\tD [label=\"D\\l\"]\n\tE [label=\"E\\l\"]\n\tA -> B [label=forward]\n\tA -> A [label=\"back | reset\"]\n\tB -> C [label=forward]\n\tB -> A [label=\"back | reset\"]\n\tC -> D [label=forward]\n\tC -> A [label=\"back | reset\"]\n\tD -> E [label=forward]\n\tD -> A [label=\"back | reset\"]\n\tE -> A [label=\"back | reset\"]\n}\n",
-    "language": "python",
-    "description": "transitions: linear workflow with wildcards"
-  },
-  {
-    "source_file": "transitions/simple_toggle.py",
-    "dot_file": "transitions/simple_toggle.dot",
-    "code": "Simple toggle FSM\nStates: idle, active\nstart: idle -> active\nstop: active -> idle",
-    "dot": "digraph simple_toggle {\n\tgraph [color=black directed=true fillcolor=white label=simple_toggle rankdir=LR \"strict\"=false style=solid]\n\tnode [color=black fillcolor=white peripheries=1 shape=rectangle style=\"rounded,filled\"]\n\tedge [color=black]\n\tidle [label=\"idle\\l\" color=red fillcolor=darksalmon peripheries=2]\n\tactive [label=\"active\\l\"]\n\tidle -> active [label=start]\n\tactive -> idle [label=stop]\n}\n",
-    "language": "python",
-    "description": "transitions: simple toggle"
   }
 ]
