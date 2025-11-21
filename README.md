@@ -49,14 +49,14 @@ Three data streams feed the training pipeline:
 - **Status**: ✅ Validated (60 examples, 100% success rate)
 - **Coverage**: State machines, workflows, architecture diagrams, decision trees, network topology
 
-**Current Dataset Status (as of 2025-11-20):**
-- Documentation Stream: 44 pairs (13 gallery + 31 attributes)
-- Logic Stream: 106 pairs (statemachine_cat: 92 + others: 14)
-- FSM Extraction: 14 pairs (transitions: 7, fsmdot: 7)
+**Current Dataset Status (as of 2025-11-21):**
+- Documentation Stream: 60 pairs (13 gallery + 31 attributes + 16 other)
+- Logic Stream: 172 pairs (statemachine_cat: 92, transitions: 12, fsmdot: 7, others: 61)
+- Attribute-Docs Stream: 31 pairs
 - Synthetic Stream: 10 pairs
-- **Total: ~174 training pairs** (all 100% syntactically validated)
-- **Phase II.1 Status**: ✅ COMPLETE - Training validated with 56% success rate
-- **Phase II.2 Status**: 🔄 READY - 14% more data, ready for next training run
+- **Total: 273 training pairs** (all 100% syntactically validated)
+- **Phase II.1 Status**: ✅ COMPLETE - Training validated with 56% success rate (153 pairs)
+- **Phase II.2 Status**: ✅ READY - 78% more data than Phase II.1, target reached (250-350 pairs)
 - **Sources tracked**: data/sources.txt, docs/FSM_EXTRACTION_REPORT.md
 
 ### Data Schema

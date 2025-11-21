@@ -1,0 +1,98 @@
+[
+  {
+    "source_file": "transitions/tests/simple_linear_fsm.py",
+    "dot_file": "transitions/tests/simple_linear_fsm.dot",
+    "code": "Simple linear state progression (walk \u2192 run \u2192 sprint)\n\nStates: A, B, C, D\nInitial state: A\n\nTransitions:\n  - walk: A \u2192 B\n  - run: B \u2192 C\n  - sprint: C \u2192 D",
+    "dot": "digraph simple_linear_fsm {\n\tgraph [color=black directed=true fillcolor=white label=simple_linear_fsm rankdir=LR \"strict\"=false style=solid]\n\tnode [color=black fillcolor=white peripheries=1 shape=rectangle style=\"rounded,filled\"]\n\tedge [color=black]\n\tA [label=\"A\\l\" color=red fillcolor=darksalmon peripheries=2]\n\tB [label=\"B\\l\"]\n\tC [label=\"C\\l\"]\n\tD [label=\"D\\l\"]\n\tA -> B [label=walk]\n\tB -> C [label=run]\n\tC -> D [label=sprint]\n}\n",
+    "language": "python",
+    "description": "Simple linear state progression (walk \u2192 run \u2192 sprint)"
+  },
+  {
+    "source_file": "transitions/tests/conditional_transitions.py",
+    "dot_file": "transitions/tests/conditional_transitions.dot",
+    "code": "State machine with conditional transitions (sprint requires is_fast condition)\n\nStates: A, B, C, D\nInitial state: A\n\nTransitions:\n  - walk: A \u2192 B\n  - run: B \u2192 C\n  - sprint: C \u2192 D [condition: is_fast]\n  - sprint: C \u2192 B",
+    "dot": "digraph conditional_transitions {\n\tgraph [color=black directed=true fillcolor=white label=conditional_transitions rankdir=LR \"strict\"=false style=solid]\n\tnode [color=black fillcolor=white peripheries=1 shape=rectangle style=\"rounded,filled\"]\n\tedge [color=black]\n\tA [label=\"A\\l\" color=red fillcolor=darksalmon peripheries=2]\n\tB [label=\"B\\l\"]\n\tC [label=\"C\\l\"]\n\tD [label=\"D\\l\"]\n\tA -> B [label=walk]\n\tB -> C [label=run]\n\tC -> D [label=sprint]\n\tC -> B [label=sprint]\n}\n",
+    "language": "python",
+    "description": "State machine with conditional transitions (sprint requires is_fast condition)"
+  },
+  {
+    "source_file": "transitions/tests/roi_multiple_targets.py",
+    "dot_file": "transitions/tests/roi_multiple_targets.dot",
+    "code": "Multiple transition targets from single state (B \u2192 A, C, F)\n\nStates: A, B, C, D, E, F\nInitial state: A\n\nTransitions:\n  - to_state_A: B \u2192 A\n  - to_state_C: B \u2192 C\n  - to_state_F: B \u2192 F\n  - to_C: A \u2192 C\n  - to_E: C \u2192 E\n  - to_B: E \u2192 B",
+    "dot": "digraph roi_multiple_targets {\n\tgraph [color=black directed=true fillcolor=white label=roi_multiple_targets rankdir=LR \"strict\"=false style=solid]\n\tnode [color=black fillcolor=white peripheries=1 shape=rectangle style=\"rounded,filled\"]\n\tedge [color=black]\n\tA [label=\"A\\l\" color=red fillcolor=darksalmon peripheries=2]\n\tB [label=\"B\\l\"]\n\tC [label=\"C\\l\"]\n\tD [label=\"D\\l\"]\n\tE [label=\"E\\l\"]\n\tF [label=\"F\\l\"]\n\tB -> A [label=to_state_A]\n\tB -> C [label=to_state_C]\n\tB -> F [label=to_state_F]\n\tA -> C [label=to_C]\n\tC -> E [label=to_E]\n\tE -> B [label=to_B]\n}\n",
+    "language": "python",
+    "description": "Multiple transition targets from single state (B \u2192 A, C, F)"
+  },
+  {
+    "source_file": "transitions/tests/loop_transitions.py",
+    "dot_file": "transitions/tests/loop_transitions.dot",
+    "code": "State machine with self-loops and reset transitions\n\nStates: A, B, C\nInitial state: A\n\nTransitions:\n  - reset: A \u2192 A\n  - reset: B \u2192 A\n  - reset: C \u2192 A\n  - advance: A \u2192 B\n  - advance: B \u2192 C",
+    "dot": "digraph loop_transitions {\n\tgraph [color=black directed=true fillcolor=white label=loop_transitions rankdir=LR \"strict\"=false style=solid]\n\tnode [color=black fillcolor=white peripheries=1 shape=rectangle style=\"rounded,filled\"]\n\tedge [color=black]\n\tA [label=\"A\\l\" color=red fillcolor=darksalmon peripheries=2]\n\tB [label=\"B\\l\"]\n\tC [label=\"C\\l\"]\n\tA -> A [label=reset]\n\tA -> B [label=advance]\n\tB -> A [label=reset]\n\tB -> C [label=advance]\n\tC -> A [label=reset]\n}\n",
+    "language": "python",
+    "description": "State machine with self-loops and reset transitions"
+  },
+  {
+    "source_file": "transitions/tests/bidirectional_fsm.py",
+    "dot_file": "transitions/tests/bidirectional_fsm.dot",
+    "code": "Bidirectional FSM with wildcard error transition\n\nStates: idle, active, paused, error\nInitial state: idle\n\nTransitions:\n  - start: idle \u2192 active\n  - pause: active \u2192 paused\n  - resume: paused \u2192 active\n  - stop: active \u2192 idle\n  - stop: paused \u2192 idle\n  - fail: * \u2192 error\n  - recover: error \u2192 idle",
+    "dot": "digraph bidirectional_fsm {\n\tgraph [color=black directed=true fillcolor=white label=bidirectional_fsm rankdir=LR \"strict\"=false style=solid]\n\tnode [color=black fillcolor=white peripheries=1 shape=rectangle style=\"rounded,filled\"]\n\tedge [color=black]\n\tidle [label=\"idle\\l\" color=red fillcolor=darksalmon peripheries=2]\n\tactive [label=\"active\\l\"]\n\tpaused [label=\"paused\\l\"]\n\terror [label=\"error\\l\"]\n\tidle -> active [label=start]\n\tidle -> error [label=fail]\n\tactive -> paused [label=pause]\n\tactive -> idle [label=stop]\n\tactive -> error [label=fail]\n\tpaused -> active [label=resume]\n\tpaused -> idle [label=stop]\n\tpaused -> error [label=fail]\n\terror -> error [label=fail]\n\terror -> idle [label=recover]\n}\n",
+    "language": "python",
+    "description": "Bidirectional FSM with wildcard error transition"
+  },
+  {
+    "source_file": "transitions/tests/traffic_light_cycle.py",
+    "dot_file": "transitions/tests/traffic_light_cycle.dot",
+    "code": "Cyclic traffic light state machine\n\nStates: green, yellow, red\nInitial state: green\n\nTransitions:\n  - next: green \u2192 yellow\n  - next: yellow \u2192 red\n  - next: red \u2192 green",
+    "dot": "digraph traffic_light_cycle {\n\tgraph [color=black directed=true fillcolor=white label=traffic_light_cycle rankdir=LR \"strict\"=false style=solid]\n\tnode [color=black fillcolor=white peripheries=1 shape=rectangle style=\"rounded,filled\"]\n\tedge [color=black]\n\tgreen [label=\"green\\l\" color=red fillcolor=darksalmon peripheries=2]\n\tyellow [label=\"yellow\\l\"]\n\tred [label=\"red\\l\"]\n\tgreen -> yellow [label=next]\n\tyellow -> red [label=next]\n\tred -> green [label=next]\n}\n",
+    "language": "python",
+    "description": "Cyclic traffic light state machine"
+  },
+  {
+    "source_file": "transitions/tests/network_connection.py",
+    "dot_file": "transitions/tests/network_connection.dot",
+    "code": "Network connection lifecycle with reconnection logic\n\nStates: disconnected, connecting, connected, reconnecting, error\nInitial state: disconnected\n\nTransitions:\n  - connect: disconnected \u2192 connecting\n  - established: connecting \u2192 connected\n  - disconnect: connected \u2192 disconnected\n  - timeout: connecting \u2192 error\n  - lost: connected \u2192 reconnecting\n  - established: reconnecting \u2192 connected\n  - timeout: reconnecting \u2192 disconnected",
+    "dot": "digraph network_connection {\n\tgraph [color=black directed=true fillcolor=white label=network_connection rankdir=LR \"strict\"=false style=solid]\n\tnode [color=black fillcolor=white peripheries=1 shape=rectangle style=\"rounded,filled\"]\n\tedge [color=black]\n\tdisconnected [label=\"disconnected\\l\" color=red fillcolor=darksalmon peripheries=2]\n\tconnecting [label=\"connecting\\l\"]\n\tconnected [label=\"connected\\l\"]\n\treconnecting [label=\"reconnecting\\l\"]\n\terror [label=\"error\\l\"]\n\tdisconnected -> connecting [label=connect]\n\tconnecting -> connected [label=established]\n\tconnecting -> error [label=timeout]\n\treconnecting -> connected [label=established]\n\treconnecting -> disconnected [label=timeout]\n\tconnected -> disconnected [label=disconnect]\n\tconnected -> reconnecting [label=lost]\n}\n",
+    "language": "python",
+    "description": "Network connection lifecycle with reconnection logic"
+  },
+  {
+    "source_file": "transitions/tests/document_workflow.py",
+    "dot_file": "transitions/tests/document_workflow.dot",
+    "code": "Document approval and publishing workflow\n\nStates: draft, review, approved, published, archived\nInitial state: draft\n\nTransitions:\n  - submit: draft \u2192 review\n  - approve: review \u2192 approved\n  - reject: review \u2192 draft\n  - publish: approved \u2192 published\n  - archive: published \u2192 archived\n  - unarchive: archived \u2192 published",
+    "dot": "digraph document_workflow {\n\tgraph [color=black directed=true fillcolor=white label=document_workflow rankdir=LR \"strict\"=false style=solid]\n\tnode [color=black fillcolor=white peripheries=1 shape=rectangle style=\"rounded,filled\"]\n\tedge [color=black]\n\tdraft [label=\"draft\\l\" color=red fillcolor=darksalmon peripheries=2]\n\treview [label=\"review\\l\"]\n\tapproved [label=\"approved\\l\"]\n\tpublished [label=\"published\\l\"]\n\tarchived [label=\"archived\\l\"]\n\tdraft -> review [label=submit]\n\treview -> approved [label=approve]\n\treview -> draft [label=reject]\n\tapproved -> published [label=publish]\n\tpublished -> archived [label=archive]\n\tarchived -> published [label=unarchive]\n}\n",
+    "language": "python",
+    "description": "Document approval and publishing workflow"
+  },
+  {
+    "source_file": "transitions/tests/game_player_states.py",
+    "dot_file": "transitions/tests/game_player_states.dot",
+    "code": "Game character state machine with combat and movement\n\nStates: idle, walking, running, jumping, attacking, dead\nInitial state: idle\n\nTransitions:\n  - move: idle \u2192 walking\n  - sprint: walking \u2192 running\n  - stop: walking \u2192 idle\n  - stop: running \u2192 idle\n  - jump: idle \u2192 jumping\n  - jump: walking \u2192 jumping\n  - jump: running \u2192 jumping\n  - land: jumping \u2192 idle\n  - attack: idle \u2192 attacking\n  - attack: walking \u2192 attacking\n  - finish_attack: attacking \u2192 idle\n  - die: * \u2192 dead",
+    "dot": "digraph game_player_states {\n\tgraph [color=black directed=true fillcolor=white label=game_player_states rankdir=LR \"strict\"=false style=solid]\n\tnode [color=black fillcolor=white peripheries=1 shape=rectangle style=\"rounded,filled\"]\n\tedge [color=black]\n\tidle [label=\"idle\\l\" color=red fillcolor=darksalmon peripheries=2]\n\twalking [label=\"walking\\l\"]\n\trunning [label=\"running\\l\"]\n\tjumping [label=\"jumping\\l\"]\n\tattacking [label=\"attacking\\l\"]\n\tdead [label=\"dead\\l\"]\n\tidle -> walking [label=move]\n\tidle -> jumping [label=jump]\n\tidle -> attacking [label=attack]\n\tidle -> dead [label=die]\n\twalking -> running [label=sprint]\n\twalking -> idle [label=stop]\n\twalking -> jumping [label=jump]\n\twalking -> attacking [label=attack]\n\twalking -> dead [label=die]\n\trunning -> idle [label=stop]\n\trunning -> jumping [label=jump]\n\trunning -> dead [label=die]\n\tjumping -> idle [label=land]\n\tjumping -> dead [label=die]\n\tattacking -> idle [label=finish_attack]\n\tattacking -> dead [label=die]\n\tdead -> dead [label=die]\n}\n",
+    "language": "python",
+    "description": "Game character state machine with combat and movement"
+  },
+  {
+    "source_file": "transitions/tests/phone_call_fsm.py",
+    "dot_file": "transitions/tests/phone_call_fsm.dot",
+    "code": "Phone call state machine with hold functionality\n\nStates: idle, ringing, active, on_hold, ended\nInitial state: idle\n\nTransitions:\n  - incoming_call: idle \u2192 ringing\n  - answer: ringing \u2192 active\n  - reject: ringing \u2192 ended\n  - hold: active \u2192 on_hold\n  - resume: on_hold \u2192 active\n  - hangup: active \u2192 ended\n  - hangup: on_hold \u2192 ended\n  - reset: ended \u2192 idle",
+    "dot": "digraph phone_call_fsm {\n\tgraph [color=black directed=true fillcolor=white label=phone_call_fsm rankdir=LR \"strict\"=false style=solid]\n\tnode [color=black fillcolor=white peripheries=1 shape=rectangle style=\"rounded,filled\"]\n\tedge [color=black]\n\tidle [label=\"idle\\l\" color=red fillcolor=darksalmon peripheries=2]\n\tringing [label=\"ringing\\l\"]\n\tactive [label=\"active\\l\"]\n\ton_hold [label=\"on_hold\\l\"]\n\tended [label=\"ended\\l\"]\n\tidle -> ringing [label=incoming_call]\n\tringing -> active [label=answer]\n\tringing -> ended [label=reject]\n\tactive -> on_hold [label=hold]\n\tactive -> ended [label=hangup]\n\ton_hold -> active [label=resume]\n\ton_hold -> ended [label=hangup]\n\tended -> idle [label=reset]\n}\n",
+    "language": "python",
+    "description": "Phone call state machine with hold functionality"
+  },
+  {
+    "source_file": "transitions/tests/order_processing.py",
+    "dot_file": "transitions/tests/order_processing.dot",
+    "code": "E-commerce order processing workflow with cancellation and refunds\n\nStates: pending, confirmed, paid, shipped, delivered, cancelled, refunded\nInitial state: pending\n\nTransitions:\n  - confirm: pending \u2192 confirmed\n  - pay: confirmed \u2192 paid\n  - ship: paid \u2192 shipped\n  - deliver: shipped \u2192 delivered\n  - cancel: pending \u2192 cancelled\n  - cancel: confirmed \u2192 cancelled\n  - refund: paid \u2192 refunded\n  - refund: shipped \u2192 refunded",
+    "dot": "digraph order_processing {\n\tgraph [color=black directed=true fillcolor=white label=order_processing rankdir=LR \"strict\"=false style=solid]\n\tnode [color=black fillcolor=white peripheries=1 shape=rectangle style=\"rounded,filled\"]\n\tedge [color=black]\n\tpending [label=\"pending\\l\" color=red fillcolor=darksalmon peripheries=2]\n\tconfirmed [label=\"confirmed\\l\"]\n\tpaid [label=\"paid\\l\"]\n\tshipped [label=\"shipped\\l\"]\n\tdelivered [label=\"delivered\\l\"]\n\tcancelled [label=\"cancelled\\l\"]\n\trefunded [label=\"refunded\\l\"]\n\tpending -> confirmed [label=confirm]\n\tpending -> cancelled [label=cancel]\n\tconfirmed -> paid [label=pay]\n\tconfirmed -> cancelled [label=cancel]\n\tpaid -> shipped [label=ship]\n\tpaid -> refunded [label=refund]\n\tshipped -> delivered [label=deliver]\n\tshipped -> refunded [label=refund]\n}\n",
+    "language": "python",
+    "description": "E-commerce order processing workflow with cancellation and refunds"
+  },
+  {
+    "source_file": "transitions/tests/atm_transaction.py",
+    "dot_file": "transitions/tests/atm_transaction.dot",
+    "code": "ATM withdrawal transaction flow with error handling\n\nStates: ready, card_inserted, pin_entered, menu, processing, dispensing, error\nInitial state: ready\n\nTransitions:\n  - insert_card: ready \u2192 card_inserted\n  - enter_pin: card_inserted \u2192 pin_entered\n  - invalid_pin: card_inserted \u2192 error\n  - pin_ok: pin_entered \u2192 menu\n  - select_withdrawal: menu \u2192 processing\n  - success: processing \u2192 dispensing\n  - insufficient_funds: processing \u2192 error\n  - take_cash: dispensing \u2192 ready\n  - reset: error \u2192 ready",
+    "dot": "digraph atm_transaction {\n\tgraph [color=black directed=true fillcolor=white label=atm_transaction rankdir=LR \"strict\"=false style=solid]\n\tnode [color=black fillcolor=white peripheries=1 shape=rectangle style=\"rounded,filled\"]\n\tedge [color=black]\n\tready [label=\"ready\\l\" color=red fillcolor=darksalmon peripheries=2]\n\tcard_inserted [label=\"card_inserted\\l\"]\n\tpin_entered [label=\"pin_entered\\l\"]\n\tmenu [label=\"menu\\l\"]\n\tprocessing [label=\"processing\\l\"]\n\tdispensing [label=\"dispensing\\l\"]\n\terror [label=\"error\\l\"]\n\tready -> card_inserted [label=insert_card]\n\tcard_inserted -> pin_entered [label=enter_pin]\n\tcard_inserted -> error [label=invalid_pin]\n\tpin_entered -> menu [label=pin_ok]\n\tmenu -> processing [label=select_withdrawal]\n\tprocessing -> dispensing [label=success]\n\tprocessing -> error [label=insufficient_funds]\n\tdispensing -> ready [label=take_cash]\n\terror -> ready [label=reset]\n}\n",
+    "language": "python",
+    "description": "ATM withdrawal transaction flow with error handling"
+  }
+]
